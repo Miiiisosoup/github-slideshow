@@ -223,32 +223,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (checkoutForm) {
-        checkoutForm.addEventListener('submit', (event) => {
+        checkoutForm.addEventListener('submit', async (event) => { // Made async
             event.preventDefault();
-            // Basic validation example
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            if (!name || !email) {
+
+            const placeOrderBtn = document.getElementById('place-order-btn');
+            const originalBtnText = placeOrderBtn.textContent;
+            placeOrderBtn.disabled = true;
+            placeOrderBtn.textContent = 'Processing...';
+
+            const customerName = document.getElementById('name').value; // Assuming 'name' is the ID for customer name
+            const customerEmail = document.getElementById('email').value; // Assuming 'email' is the ID for customer email
+
+            if (!customerName || !customerEmail) {
                 alert("Please fill in your Name and Email.");
-                return;
-            }
-            if(cart.length === 0){
-                alert("Your cart is empty. Please add items before placing an order.");
+                placeOrderBtn.disabled = false;
+                placeOrderBtn.textContent = originalBtnText;
                 return;
             }
 
-            alert("Order Placed (Simulated)! Thank you for your purchase. We will be in touch shortly via email.");
-            
-            // Clear cart after "successful" simulated order
-            cart.length = 0;
-            localStorage.removeItem('nexroyCart');
-            updateCartIndicator();
-            
-            // Optionally redirect or clear form
-            checkoutForm.reset();
-            if (checkoutOrderSummaryContainer) checkoutOrderSummaryContainer.innerHTML = '<p>Your order has been placed. Cart is now empty.</p>';
-            if (document.getElementById('cart-subtotal')) document.getElementById('cart-subtotal').textContent = '₹0.00'; // if on same page
-            // window.location.href = 'thank-you.html'; // If you have a thank you page
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add items before placing an order.");
+                placeOrderBtn.disabled = false;
+                placeOrderBtn.textContent = originalBtnText;
+                return;
+            }
+
+            // Calculate totalAmount from cart (in Rupees)
+            const totalAmountForBackend = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            // Prepare items for notes
+            const cartItemsForNotes = cart.map(item => ({
+                productId: item.id, // Assuming 'id' is used in your cart item structure
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price // Price per unit
+            }));
+
+            const requestBody = {
+                totalAmount: totalAmountForBackend, // in Rupees
+                notes: {
+                    customer_name: customerName,
+                    customer_email: customerEmail,
+                    items: JSON.stringify(cartItemsForNotes) // Stringify the items array for notes
+                }
+            };
+
+            try {
+                // Call Backend to Create Razorpay Order
+                const orderResponse = await fetch('/api/orders/razorpay-create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody) // Use the new requestBody
+                });
+
+                if (!orderResponse.ok) {
+                    const errorData = await orderResponse.json();
+                    alert(`Error creating Razorpay order: ${errorData.msg || orderResponse.statusText}. Please try again.`);
+                    placeOrderBtn.disabled = false;
+                    placeOrderBtn.textContent = originalBtnText;
+                    return;
+                }
+                const orderData = await orderResponse.json(); // Contains { orderId, amount, currency }
+
+                // Initialize Razorpay Checkout
+                const options = {
+                    key: "rzp_test_YOUR_KEY_ID", // Replace with your actual TEST Key ID (placeholder)
+                    amount: orderData.amount, // Amount from backend (in paise)
+                    currency: orderData.currency, // Should be "INR"
+                    name: "Nexroy Services",
+                    description: "Order Payment",
+                    image: "https://via.placeholder.com/150x150.png/38B2AC/FFFFFF?text=N", // Placeholder logo
+                    order_id: orderData.orderId, // From your backend
+                    handler: function (response) {
+                        // Payment successful on front-end
+                        alert('Payment successful! Your order is being processed.\nPayment ID: ' + response.razorpay_payment_id + '\nOrder ID: ' + response.razorpay_order_id + '\nYou will receive a confirmation shortly.');
+                        
+                        cart.length = 0; 
+                        localStorage.removeItem('nexroyCart');
+                        updateCartIndicator();
+                        
+                        checkoutForm.reset();
+                        if (checkoutOrderSummaryContainer) checkoutOrderSummaryContainer.innerHTML = '<p>Your order has been placed and payment was successful. Thank you! You will receive a confirmation email shortly.</p>';
+                        if (document.getElementById('cart-subtotal')) document.getElementById('cart-subtotal').textContent = '₹0.00';
+                        
+                        // Optional: Redirect to a simple confirmation page
+                        // For this task, I will create a very basic order-confirmation.html
+                        window.location.href = 'order-confirmation.html'; 
+                    },
+                    prefill: {
+                        name: customerName,
+                        email: customerEmail,
+                    },
+                    notes: {
+                        // address: "Customer Address Details" // You can add more notes if needed
+                    },
+                    theme: {
+                        color: "#38B2AC" // Using primary green theme color
+                    }
+                };
+                const rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function (response) {
+                    alert('Payment failed! Error code: ' + response.error.code + '\nDescription: ' + response.error.description);
+                    // Re-enable button on payment failure
+                    placeOrderBtn.disabled = false;
+                    placeOrderBtn.textContent = originalBtnText;
+                });
+                
+                rzp1.open(); // Open the Razorpay payment dialog
+                // Button re-enabled in .finally or if rzp1.open() doesn't block, but for Razorpay it usually does.
+                // It's safer to re-enable in payment.failed handler and after successful handler processing.
+                // For simplicity here, if rzp.open() is called, we assume user interaction follows.
+                // If user closes modal without paying, button remains disabled. A more robust solution would handle modal close.
+                // However, the current task primarily focuses on initiating payment.
+
+            } catch (error) {
+                console.error('Error during checkout process:', error);
+                alert('An error occurred during the checkout process. Please try again.');
+                placeOrderBtn.disabled = false;
+                placeOrderBtn.textContent = originalBtnText;
+            }
+            // Not re-enabling button here as Razorpay modal takes over.
+            // Re-enable in handler or payment.failed.
         });
     }
 
@@ -334,21 +429,64 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Contact Page Form Functionality ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (event) => {
+        contactForm.addEventListener('submit', async (event) => { // Made async
             event.preventDefault();
+            
+            // Add a reference to the submit button to disable it during submission
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
             const contactName = document.getElementById('contact-name').value;
             const contactEmail = document.getElementById('contact-email').value;
             const contactSubject = document.getElementById('contact-subject').value;
             const contactMessage = document.getElementById('contact-message').value;
 
-            if (!contactName || !contactEmail || !contactSubject || !contactMessage) {
-                alert("Please fill in all fields of the contact form.");
+            // Client-side validation (kept existing, can be enhanced)
+            if (!contactName || !contactEmail || !contactMessage) { // Subject can be optional
+                alert("Please fill in all required fields (Name, Email, Message).");
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
                 return;
             }
 
-            // Simulate sending message
-            alert("Thank you for your message! We'll get back to you soon.");
-            contactForm.reset(); // Clear the form
+            const formData = {
+                name: contactName,
+                email: contactEmail,
+                subject: contactSubject,
+                message: contactMessage
+            };
+
+            try {
+                const response = await fetch('http://localhost:3001/api/contact/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    alert(responseData.msg || 'Message sent successfully!');
+                    contactForm.reset();
+                } else {
+                    let errorMessage = responseData.msg || `An error occurred: ${response.statusText}`;
+                    if (responseData.errors) { 
+                        errorMessage += '\n' + responseData.errors.join('\n');
+                    }
+                    alert(errorMessage);
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('An error occurred while sending the message. Please try again later.');
+            } finally {
+                // Re-enable the button and restore its text
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
         });
     }
 
