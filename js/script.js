@@ -367,6 +367,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Services Carousel Navigation ---
+    const carouselViewport = document.querySelector('.carousel-viewport');
+    const prevCarouselBtn = document.querySelector('.carousel-btn.prev-btn');
+    const nextCarouselBtn = document.querySelector('.carousel-btn.next-btn');
+
+    if (carouselViewport && prevCarouselBtn && nextCarouselBtn) {
+        const scrollAmount = () => {
+            // Attempt to get the width of a single slide.
+            // If slides have variable width or this is complex, use viewport width.
+            const firstSlide = carouselViewport.querySelector('.carousel-slide');
+            if (firstSlide) {
+                // Consider slide width + gap for a more accurate scroll per item
+                const slideStyle = window.getComputedStyle(firstSlide);
+                const slideMarginRight = parseFloat(slideStyle.marginRight); // If gap is from margin
+                // If gap is from `gap` property on flex container, it's harder to get directly per slide here.
+                // Let's use a simpler approach: scroll by a percentage of viewport or fixed amount.
+                // For simplicity and given CSS snap, scrolling by viewport width is often effective.
+                return carouselViewport.clientWidth * 0.8; // Scroll by 80% of viewport width
+            }
+            return carouselViewport.clientWidth * 0.8; // Default if no slide found (fallback)
+        };
+
+        nextCarouselBtn.addEventListener('click', () => {
+            carouselViewport.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+
+        prevCarouselBtn.addEventListener('click', () => {
+            carouselViewport.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+    }
+
 });
 
 // Helper function to get current cart (if needed outside DOMContentLoaded)

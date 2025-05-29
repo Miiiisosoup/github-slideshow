@@ -258,6 +258,70 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 5px;
 }
 
+.nav-arrow { /* Style for the chevron icon - already present */
+    font-size: 0.8em;
+    margin-left: 0.3em;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.open > .dropdown-toggle .nav-arrow { /* For rotating arrow - already present */
+    transform: rotate(180deg);
+}
+
+.dropdown { /* Parent LI - already present */
+    position: relative;
+}
+
+.dropdown-menu {
+    /* display: none; -- Replaced by opacity/visibility/max-height for transition */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0; /* Initial state for animation */
+    overflow: hidden; /* Important for max-height transition */
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: var(--dark-text); 
+    border: 1px solid var(--primary-green); 
+    border-top: none; 
+    border-radius: 0 0 4px 4px; 
+    padding: 0 0; /* No padding when closed */
+    margin: 0;
+    list-style: none;
+    min-width: 220px; 
+    z-index: 1001; 
+    box-shadow: 0 5px 15px rgba(45, 55, 72, 0.1); /* UPDATED - Refined shadow */
+    transition: opacity 0.2s ease-out, max-height 0.2s ease-out, visibility 0.2s ease-out, padding 0.2s ease-out;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+.dropdown.open > .dropdown-menu {
+    /* display: block; -- No longer needed */
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* Sufficiently large to show all items */
+    padding: 0.5rem 0; /* Restore padding when open */
+    pointer-events: auto; /* Allow interaction when open */
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: var(--light-background);
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus { /* ADDED :focus state */
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    text-decoration: none;
+    outline: none; /* Remove default focus outline if custom style is sufficient */
+}
+
+
 .nav-toggle {
     display: none; /* Hidden by default, shown in media query */
     background: none;
@@ -346,12 +410,47 @@ h1, h2, h3, h4, h5, h6 {
     .main-nav .nav-links li {
         margin-left: 0;
         text-align: center;
-        padding: 0.5rem 0;
+        /* padding: 0.5rem 0; -- Removed to allow full-width clickable links/dropdown toggle */
     }
 
-    .main-nav .nav-links li a {
+    .main-nav .nav-links li a,
+    .main-nav .nav-links .dropdown-toggle { /* Ensure toggle also gets full width tap area */
         display: block;
         padding: 0.8rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .main-nav .nav-links .dropdown-menu {
+        position: static; /* Override absolute positioning for mobile */
+        background-color: #233140; /* Slightly lighter than main nav for distinction */
+        border: none;
+        box-shadow: none;
+        /* padding: 0; -- Handled by open state for animation */
+        min-width: 100%;
+        /* max-height: 0; -- Already set by default .dropdown-menu rules */
+        /* opacity: 0; -- Already set */
+        /* visibility: hidden; -- Already set */
+        /* overflow: hidden; -- Already set */
+        /* transition is inherited from desktop and should work */
+    }
+    /* .main-nav .nav-links .dropdown.open > .dropdown-menu is handled by desktop .dropdown.open > .dropdown-menu for visibility */
+    /* We just need to ensure padding is restored if it was different */
+     .main-nav .nav-links .dropdown.open > .dropdown-menu {
+        padding: 0.5rem 0; /* Ensure padding is restored */
+     }
+
+
+    .main-nav .nav-links .dropdown-menu li a {
+        padding: 0.7rem 1rem; /* Slightly different padding for mobile dropdown items */
+        font-size: 0.9rem; 
+        text-align: center; 
+        color: var(--light-background);
+    }
+    .main-nav .nav-links .dropdown-menu li a:hover,
+    .main-nav .nav-links .dropdown-menu li a:focus { /* ADDED :focus state for mobile */
+        background-color: var(--primary-green);
+        outline: none; /* Remove default focus outline */
     }
     
     .main-nav .nav-toggle {
@@ -1005,6 +1104,134 @@ a:hover {
 .button:hover, .add-to-cart-btn:hover {
     text-decoration: none;
 }
+
+
+/* Services Carousel Section */
+.services-carousel {
+    padding: 2rem 0; /* Vertical padding, horizontal will be handled by viewport if needed */
+    background-color: #ffffff; /* Or var(--light-background) if a slight contrast is desired */
+    margin-bottom: 2rem; /* Space before footer or next section */
+    position: relative; /* For positioning nav buttons */
+}
+
+.services-carousel .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--dark-text);
+    margin-bottom: 2rem;
+}
+
+.carousel-viewport {
+    overflow-x: auto;
+    overflow-y: hidden; /* Hide vertical scrollbar if any content ever overflows */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for Firefox */
+.carousel-viewport {
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-slides {
+    display: flex;
+    gap: 1.5rem; /* Space between slides */
+    padding: 0 1.5rem; /* Padding on the sides of the slides container */
+                         /* This allows first/last slide to snap to center if viewport has no padding */
+}
+
+.carousel-slide {
+    flex: 0 0 80%; /* Each slide takes up 80% of the viewport width */
+    max-width: 320px; /* Max width for a slide to prevent them being too large on wide viewports */
+    scroll-snap-align: center; /* Snap slides to the center of the viewport */
+    background-color: var(--light-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.1);
+    overflow: hidden; /* To ensure child elements also respect border-radius */
+    text-decoration: none; /* Remove underline from link */
+    color: var(--dark-text); /* Default text color for slide content */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(45, 55, 72, 0.15);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensure image covers the area, might crop */
+}
+
+.slide-caption {
+    padding: 1rem;
+    text-align: center;
+    flex-grow: 1; /* Allows caption to take remaining space if needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-title {
+    font-size: 1.4rem; /* Poppins */
+    color: var(--dark-text);
+    margin-bottom: 0.5rem;
+}
+
+.slide-tagline {
+    font-size: 0.9rem; /* Open Sans */
+    color: var(--dark-text);
+    line-height: 1.5;
+    margin-bottom: 0; /* Remove default p margin if it's the last element */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%; /* Vertically center relative to the viewport or section */
+    transform: translateY(-50%); /* Precise vertical centering */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    color: var(--dark-text);
+    border: 1px solid var(--neutral-gray);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10; /* Ensure they are above slides */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-btn:hover,
+.carousel-btn:focus {
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    outline: none;
+}
+
+.prev-btn {
+    left: 10px; /* Adjust as needed */
+}
+
+.next-btn {
+    right: 10px; /* Adjust as needed */
+}
+
+/* Adjust button position if viewport has padding and buttons should be inside it */
+/* Example: If .carousel-viewport has padding: 0 40px; and buttons need to be over that padding */
+/* .carousel-viewport .prev-btn { left: 50px; } */
+/* .carousel-viewport .next-btn { right: 50px; } */
+
 
 /* Chatbot Styles */
 .chatbot-toggler {
