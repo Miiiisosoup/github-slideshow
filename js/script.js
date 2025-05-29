@@ -1,16 +1,51 @@
 // Main JavaScript file for Nexroy
 
 document.addEventListener('DOMContentLoaded', () => {
-    const cart = JSON.parse(localStorage.getItem('nexroyCart')) || [];
+    // 1. Modify Cart Initialization from localStorage
+    let rawCart = [];
+    try {
+        rawCart = JSON.parse(localStorage.getItem('nexroyCart')) || [];
+    } catch (error) {
+        console.error("Error parsing nexroyCart from localStorage:", error);
+        // rawCart remains [], so cart will be empty, which is a safe default
+    }
+
+    const cleanedCart = rawCart.filter(item => {
+        const quantity = item && typeof item.quantity === 'number' && !isNaN(item.quantity) ? item.quantity : 0;
+        return quantity > 0;
+    }).map(item => { // Ensure quantity is an integer after filtering, though filter already checks for number.
+        item.quantity = Math.floor(item.quantity); // Or Math.round() if preferred
+        return item;
+    });
+
+    // The global 'cart' variable used throughout the script is this cleanedCart.
+    // Since 'cart' was originally a const, and its reference is passed around,
+    // we need to make sure functions modify this 'cleanedCart' or that 'cart' itself is mutable
+    // and correctly reassigned if functions expect to reassign the global cart.
+    // For this script's structure, where `cart` is a const initialized at the top
+    // and then mutated by .push, .splice, .length=0, we'll assign cleanedCart to a new
+    // mutable variable (let) that has the same name 'cart' for minimal changes to the rest of the script.
+    // However, the original `cart` was a const. Modifying this to `let` for the entire scope.
+    // To preserve the const nature for functions not expecting to reassign `cart` itself,
+    // but rather mutate its contents, we can initialize `cart` with `cleanedCart`'s contents.
+    // The simplest way is to make `cart` a `let` variable.
+    let cart = cleanedCart;
+    // If cart items were re-validated and some removed, update localStorage.
+    if (rawCart.length !== cart.length) {
+        localStorage.setItem('nexroyCart', JSON.stringify(cart));
+    }
+
 
     // --- General UI Elements ---
-    const cartCountIndicator = document.getElementById('cart-count'); // Assuming you add an element with this ID in your header nav for cart count
+    const cartCountIndicator = document.getElementById('cart-count');
 
     function updateCartIndicator() {
         if (cartCountIndicator) {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCountIndicator.textContent = totalItems;
-            cartCountIndicator.style.display = totalItems > 0 ? 'inline' : 'none'; // Show if items > 0
+            // 2. Defensive Coding in updateCartIndicator
+            const displayTotal = Math.max(0, totalItems);
+            cartCountIndicator.textContent = displayTotal;
+            cartCountIndicator.style.display = displayTotal > 0 ? 'inline' : 'none'; // Show if items > 0
         }
     }
 
