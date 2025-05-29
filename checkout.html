@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Nexroy Secure Order</title>
+    <meta name="description" content="Complete your Nexroy order. Enter your details and payment information to purchase our design services and products securely.">
+    <meta name="keywords" content="checkout, Nexroy order, secure payment, design purchase, customer details">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand">Nexroy</a>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="page-header">
+        <h1>Checkout</h1>
+    </header>
+
+    <main class="checkout-content">
+        <form id="checkout-form">
+            <section class="customer-details">
+                <h2>Your Details</h2>
+                <div>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </section>
+
+            <section class="shipping-details">
+                <h2>Shipping Address</h2>
+                <div>
+                    <label for="shipping-address">Street Address:</label>
+                    <input type="text" id="shipping-address" name="shipping-address">
+                </div>
+                <div>
+                    <label for="shipping-city">City:</label>
+                    <input type="text" id="shipping-city" name="shipping-city">
+                </div>
+                <div>
+                    <label for="shipping-zip">ZIP Code:</label>
+                    <input type="text" id="shipping-zip" name="shipping-zip">
+                </div>
+                <div>
+                    <label for="shipping-country">Country:</label>
+                    <input type="text" id="shipping-country" name="shipping-country">
+                </div>
+            </section>
+
+            <section class="billing-details">
+                <h2>Billing Address</h2>
+                <div>
+                    <input type="checkbox" id="same-as-shipping" name="same-as-shipping">
+                    <label for="same-as-shipping">Same as shipping address</label>
+                </div>
+                <div>
+                    <label for="billing-address">Street Address:</label>
+                    <input type="text" id="billing-address" name="billing-address">
+                </div>
+                <div>
+                    <label for="billing-city">City:</label>
+                    <input type="text" id="billing-city" name="billing-city">
+                </div>
+                <div>
+                    <label for="billing-zip">ZIP Code:</label>
+                    <input type="text" id="billing-zip" name="billing-zip">
+                </div>
+                <div>
+                    <label for="billing-country">Country:</label>
+                    <input type="text" id="billing-country" name="billing-country">
+                </div>
+            </section>
+
+            <section class="order-summary-checkout">
+                <h2>Order Summary</h2>
+                <div id="checkout-order-summary">
+                    <!-- Summary will be dynamically inserted here by JavaScript or simple text -->
+                    <p>Your order details will appear here.</p>
+                </div>
+            </section>
+
+            <section class="payment-information">
+                <h2>Payment Information</h2>
+                <p>Payment gateway integration coming soon. For now, click 'Place Order' to simulate.</p>
+            </section>
+
+            <button type="submit" class="button" id="place-order-btn">Place Order (Simulated)</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nexroy. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

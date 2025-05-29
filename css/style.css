@@ -1,0 +1,785 @@
+/* Main stylesheet for Nexroy */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.hero {
+    background: #333;
+    color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.hero p {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services {
+    padding: 2rem;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.service {
+    background: #fff;
+    margin: 1rem;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-block; /* Temporary for basic layout */
+    width: calc(33.333% - 2rem); /* Temporary for basic layout */
+    vertical-align: top; /* Temporary for basic layout */
+    box-sizing: border-box; /* Temporary for basic layout */
+}
+
+.service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.service p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.service a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.service a:hover {
+    text-decoration: underline;
+}
+
+.cta {
+    background: #007bff;
+    color: #fff;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    background: #fff;
+    color: #007bff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    display: inline-block; /* Ensure buttons are on the same line if space allows */
+}
+
+.button:hover {
+    background: #e2e6ea;
+    color: #0056b3;
+}
+
+/* Basic responsive adjustments */
+@media (max-width: 768px) {
+    .service {
+        width: calc(50% - 2rem); /* Adjust for smaller screens */
+    }
+}
+
+/* Main Navigation Bar */
+.main-nav {
+    background-color: #2c3e50; /* Dark blue-grey */
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-nav .nav-brand {
+    color: #ecf0f1; /* Light grey */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav ul li a:hover, .main-nav ul li a.active {
+    background-color: #3498db; /* Blue */
+    color: #fff;
+}
+
+.main-nav ul li a .fas { /* Font Awesome icon */
+    margin-right: 5px;
+}
+
+/* Original .nav-links class renamed to .main-nav ul for specificity above */
+/* New .nav-links for the ul element to be targeted by JS for toggling */
+.main-nav .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Existing style, will be overridden for mobile */
+}
+
+.main-nav .nav-links li {
+    margin-left: 20px; /* Existing style */
+}
+
+.nav-toggle {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+/* Active state for hamburger icon (X) */
+.nav-toggle.active .hamburger {
+    background: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+
+#cart-count {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+
+/* Adjust hero section padding if main-nav is fixed or very tall */
+.hero {
+    /* If main-nav height changes significantly, might need to adjust padding-top here */
+    /* Example: padding-top: calc(4rem + NAV_HEIGHT); */
+}
+
+
+@media (max-width: 768px) { /* Tablet and mobile breakpoint */
+    .main-nav .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on main-nav height */
+        left: 0;
+        background-color: #2c3e50; /* Same as nav */
+        padding: 1rem 0;
+        box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+        z-index: 1000; /* Ensure it's on top */
+    }
+
+    .main-nav .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .main-nav .nav-links li {
+        margin-left: 0;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .main-nav .nav-links li a {
+        display: block; /* Make link take full width of li */
+        padding: 0.8rem 1rem;
+    }
+    
+    .main-nav .nav-toggle {
+        display: block; /* Show hamburger button */
+    }
+}
+
+
+/* Service Page Specific Styles */
+.page-header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.page-header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.page-header nav a:hover {
+    text-decoration: underline;
+}
+
+.page-header h1 {
+    margin-top: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.service-page-content {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto; /* Center content */
+    background: #fff;
+    margin-top: 1rem; /* Space from header */
+    margin-bottom: 1rem; /* Space from footer */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.service-page-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+.service-page-content h2:first-child {
+    margin-top: 0;
+}
+
+.service-page-content p, .service-page-content ul {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.service-page-content ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.service-page-content ul li strong {
+    font-weight: bold;
+}
+
+.service-portfolio {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: #333;
+    color: #fff;
+    margin-top: 2rem; /* Ensure it's at the bottom */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Portfolio Page Specific Styles */
+.portfolio-content {
+    padding: 2rem;
+    max-width: 1200px; /* Wider for portfolio grid */
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Space between items */
+}
+
+.portfolio-item {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Control image height */
+    object-fit: cover; /* Ensure image covers the area, might crop */
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.portfolio-item h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-item p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.category-tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Responsive adjustments for portfolio grid already handled by grid-template-columns */
+
+/* E-commerce Pages (Shop, Cart, Checkout) */
+
+/* Shop Page */
+.shop-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-item {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+}
+
+.product-item p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    flex-grow: 1; /* Make description take available space */
+}
+
+.product-item .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.product-item .quantity-input {
+    width: 60px;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.add-to-cart-btn {
+    background: #28a745;
+    color: white;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: #218838;
+}
+
+/* Cart Page */
+.cart-content {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#cart-items-container .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+#cart-items-container .cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+.cart-item-details h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+}
+.cart-item-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.cart-item-actions button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.cart-item-actions button:hover {
+    background: #c82333;
+}
+
+
+.cart-summary {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #007bff;
+    text-align: right;
+}
+
+.cart-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cart-summary p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.cart-summary #clear-cart-btn {
+    background: #6c757d;
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+.cart-summary #clear-cart-btn:hover {
+    background: #5a6268;
+}
+
+
+/* Checkout Page */
+.checkout-content {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#checkout-form section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+#checkout-form section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+#checkout-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#checkout-form div {
+    margin-bottom: 0.8rem;
+}
+
+#checkout-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#checkout-form input[type="text"],
+#checkout-form input[type="email"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#checkout-form input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+#checkout-form .button {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+#checkout-order-summary p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Contact Page Specific Styles */
+.contact-page-content {
+    padding: 2rem;
+    max-width: 1100px; /* Allow wider for two-column layout */
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 2rem; /* Space between form and info sections */
+}
+
+.contact-form-section {
+    flex: 2; /* Takes more space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.contact-info-section {
+    flex: 1; /* Takes less space */
+    min-width: 280px; /* Minimum width */
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.contact-form-section h2,
+.contact-info-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+#contact-form div {
+    margin-bottom: 1rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: sans-serif; /* Ensure consistent font */
+}
+
+#contact-form textarea {
+    resize: vertical; /* Allow vertical resize */
+}
+
+#contact-form .button {
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.contact-info-section p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.contact-info-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-section ul li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.contact-info-section ul li .fas,
+.contact-info-section ul li .fab { /* Font Awesome icons */
+    margin-right: 10px;
+    color: #007bff;
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+
+.contact-info-section h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.social-media-links a {
+    color: #333;
+    font-size: 1.8rem; /* Larger icons */
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-media-links a:hover {
+    color: #007bff;
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack sections on smaller screens */
+    }
+    .contact-form-section,
+    .contact-info-section {
+        flex: 1 1 100%; /* Full width when stacked */
+    }
+}
+
+@media (max-width: 480px) {
+    .service {
+        width: calc(100% - 2rem); /* Stack services on very small screens */
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .button {
+        padding: 0.7rem 1rem;
+        margin-bottom: 0.5rem; /* Add some space between stacked buttons */
+    }
+}

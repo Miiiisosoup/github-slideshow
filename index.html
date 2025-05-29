@@ -1,13 +1,64 @@
----
-layout: presentation
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexroy - Creative Design Solutions for Your Brand</title>
+    <meta name="description" content="Nexroy offers a wide range of creative design services including branding, graphic design, logo design, and more to elevate your brand.">
+    <meta name="keywords" content="design company, creative services, branding, graphic design, logo design, portfolio making, merch design, video editing, thumbnail making, Nexroy">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for cart icon -->
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="index.html" class="nav-brand">Nexroy</a>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1>Creative Design Solutions for Your Brand</h1> <!-- Reinstated H1 for semantic clarity, hidden if brand is enough -->
+        <p>Nexroy is a creative agency specializing in crafting unique and impactful design solutions. We help businesses build strong brand identities and engaging digital experiences.</p>
+    </header>
 
-{% for post in site.posts reversed %}
-	{% include slide.html %}
-	<div class="page-break"></div>
-{% endfor %}
-{% unless site.simple-slideshow %}
-{% if site.overview %}
-<section id="overview" class="step" {% for attr in site.overview-data %} data-{{attr[0]}}="{{attr[1]}}"{% endfor %}></section>
-{% endif %}
-{% endunless %}
+    <main> <!-- Added main tag -->
+        <section class="services">
+            <h2>Our Services</h2>
+        <div class="service">
+            <h3>Graphic Design</h3>
+            <p>We create visually stunning graphics that communicate your message effectively.</p>
+            <a href="graphic-design.html">Learn More</a>
+        </div>
+        <div class="service">
+            <h3>Branding</h3>
+            <p>We develop comprehensive branding strategies to establish a strong and memorable brand identity.</p>
+            <a href="branding.html">Learn More</a>
+        </div>
+        <div class="service">
+            <h3>Logo Design</h3>
+            <p>We craft unique and memorable logos that represent the core essence of your brand.</p>
+            <a href="logo-design.html">Learn More</a>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to elevate your brand?</h2>
+        <a href="portfolio.html" class="button">Explore Our Work</a>
+        <a href="contact.html" class="button">Get in Touch</a>
+         <a href="shop.html" class="button">Visit Our Shop</a>
+        </section>
+    </main> <!-- Closed main tag -->
+
+    <footer>
+        <p>&copy; 2023 Nexroy. All rights reserved.</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
