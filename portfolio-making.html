@@ -17,6 +17,25 @@
         </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="branding.html">Branding</a></li>
+                    <li><a href="logo-design.html">Logo Design</a></li>
+                    <li><a href="portfolio-making.html">Portfolio Making</a></li>
+                    <li><a href="merch-design.html">Merch Design</a></li>
+                    <li><a href="video-editing.html">Video Editing</a></li>
+                    <li><a href="thumbnail-making.html">Thumbnail Making</a></li>
+                    <li><a href="website-building.html">Website Building</a></li>
+                    <li><a href="animated-videos.html">Animated Videos</a></li>
+                    <li><a href="wedding-cards.html">Wedding Cards</a></li>
+                    <li><a href="birthday-cards.html">Birthday Cards</a></li>
+                    <li><a href="social-media-photos.html">Social Media Photos</a></li>
+                    <li><a href="photoshop-services.html">Photoshop Services</a></li>
+                    <li><a href="merch-printing-service.html">Merch Printing</a></li>
+                </ul>
+            </li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
@@ -28,6 +47,9 @@
     </header>
 
     <main class="service-page-content">
+        <div class="service-page-intro-image">
+            <img src="https://picsum.photos/seed/nexroyportfolio/800/400" alt="Portfolio Making Concept">
+        </div>
         <section class="service-details">
             <h2>Service Offerings</h2>
             <p>Our Portfolio Making service is designed to help creatives and professionals showcase their work in the best possible light. We assist in curating content, designing the layout, and developing both digital (websites, PDF portfolios) and physical portfolios. We ensure your portfolio is tailored to your industry and career goals.</p>
@@ -56,6 +78,26 @@
     <footer>
         <p>&copy; 2023 Nexroy. All rights reserved.</p>
     </footer>
+
+    <div class="chatbot-toggler">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-window">
+        <div class="chat-header">
+            <h3>Nexroy Assistant</h3>
+            <button class="close-chat-btn">&times;</button>
+        </div>
+        <div class="chat-log">
+            <!-- Chat messages will appear here -->
+            <div class="chat-message bot">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask a question...">
+            <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

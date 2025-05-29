@@ -1,106 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@500;700&display=swap');
+
+:root {
+    --primary-green: #38B2AC;
+    --primary-yellow: #F6E05E;
+    --dark-text: #2D3748;
+    --light-background: #F7FAFC;
+    --neutral-gray: #CBD5E0;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
 /* Main stylesheet for Nexroy */
 
 body {
-    font-family: sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--light-background); /* Updated */
+    color: var(--dark-text); /* Updated */
     line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-top: 0; /* Common reset for headings */
+}
+
+/* Hero Section Styling */
 .hero {
-    background: #333;
-    color: #fff;
-    padding: 4rem 2rem;
-    text-align: center;
+    background-color: var(--primary-green); /* Using primary green for hero */
+    color: var(--light-background);
+    padding: 3rem 2rem; /* Adjusted padding */
+    display: flex; /* For side-by-side layout */
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-
-.hero h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: normal;
-}
-
-.hero p {
-    font-size: 1rem;
+.hero-content {
+    flex: 1;
+    text-align: left; /* Align text to the left */
     max-width: 600px;
-    margin: 0 auto;
 }
 
+.hero-content h1 {
+    font-size: 2.8rem; /* Slightly adjusted */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.1rem; /* Slightly larger paragraph text */
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.button.button-hero { /* Specific style for hero button */
+    background-color: var(--primary-yellow);
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    padding: 0.9rem 2rem;
+}
+.button.button-hero:hover {
+    background-color: #FAD944; /* Darker yellow */
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 550px; /* Control image size */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for image */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* Services Section Styling */
 .services {
-    padding: 2rem;
+    padding: 3rem 2rem; /* Adjusted padding */
     text-align: center;
+    background-color: #ffffff; 
 }
 
 .services h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.2rem; /* Adjusted size */
+    margin-bottom: 2.5rem; /* Increased margin */
+    color: var(--dark-text); /* Changed from primary-green for better contrast on white */
+}
+
+.services-grid { /* New wrapper for service items */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .service {
-    background: #fff;
-    margin: 1rem;
-    padding: 1.5rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: inline-block; /* Temporary for basic layout */
-    width: calc(33.333% - 2rem); /* Temporary for basic layout */
-    vertical-align: top; /* Temporary for basic layout */
-    box-sizing: border-box; /* Temporary for basic layout */
+    background: var(--light-background); 
+    padding: 2rem; /* Increased padding */
+    border-radius: 8px; /* Enhanced border-radius */
+    border: 1px solid var(--neutral-gray); 
+    box-shadow: 0 4px 8px rgba(45, 55, 72, 0.1); /* Enhanced shadow */
+    text-align: center; /* Ensure content is centered */
+    display: flex; /* Use flex for better alignment */
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(45, 55, 72, 0.15);
 }
 
+.service-icon {
+    width: 60px; /* Was 80x80 in HTML, adjust if needed */
+    height: 60px;
+    margin-bottom: 1rem;
+    border-radius: 50%; /* Make icon circular if desired */
+    background-color: var(--primary-green); /* Placeholder background for icon image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* If using actual img tags with text from via.placeholder, this styling might be overridden.
+       Consider using <i> tags with Font Awesome for better control if actual icons are desired.
+       For placeholder.com images, their appearance is fixed by the URL.
+    */
+}
+
+
 .service h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem; /* Adjusted size */
+    margin-bottom: 0.75rem; /* Adjusted margin */
+    color: var(--dark-text);
 }
 
 .service p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem; /* Adjusted size */
+    margin-bottom: 1.5rem; /* Increased margin */
+    flex-grow: 1; /* Allow p to grow to push button down */
 }
 
-.service a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+.service .button.button-secondary { /* Targeting the secondary button in service */
+    margin-top: auto; /* Push button to bottom of flex container */
 }
 
-.service a:hover {
-    text-decoration: underline;
-}
 
+/* CTA Section Styling */
 .cta {
-    background: #007bff;
-    color: #fff;
+    background: var(--light-background); /* Changed from primary-green */
+    color: var(--dark-text); /* Text color for light background */
     padding: 3rem 2rem;
     text-align: center;
+    border-top: 1px solid var(--neutral-gray); /* Add a subtle separator */
+    border-bottom: 1px solid var(--neutral-gray);
 }
 
 .cta h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.2rem; /* Consistent with services H2 */
+    margin-bottom: 1rem; /* Reduced margin */
+}
+.cta p { /* Added styling for new paragraph in CTA */
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+
 .button {
-    background: #fff;
-    color: #007bff;
+    background: var(--primary-green); /* Primary button style */
+    color: var(--light-background);   /* UPDATED */
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: bold; /* Open Sans bold */
+    font-family: var(--font-body);
     margin: 0 0.5rem;
-    display: inline-block; /* Ensure buttons are on the same line if space allows */
+    display: inline-block;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .button:hover {
-    background: #e2e6ea;
-    color: #0056b3;
+    background: #2C8A87; /* Darker green - UPDATED */
+    color: var(--light-background); /* UPDATED */
+}
+
+/* Added secondary button style for yellow variation */
+.button.secondary { 
+    background: var(--primary-yellow);
+    color: var(--dark-text);
+}
+.button.secondary:hover {
+    background: #FAD944; 
+    color: var(--dark-text);
 }
 
 /* Basic responsive adjustments */
@@ -112,7 +208,7 @@ body {
 
 /* Main Navigation Bar */
 .main-nav {
-    background-color: #2c3e50; /* Dark blue-grey */
+    background-color: var(--dark-text); /* Updated */
     padding: 0.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -121,52 +217,45 @@ body {
 }
 
 .main-nav .nav-brand {
-    color: #ecf0f1; /* Light grey */
-    font-size: 1.8rem;
-    font-weight: bold;
+    color: var(--light-background); /* Updated */
+    font-size: 1.8rem; /* Will inherit Poppins */
+    font-weight: bold; /* Poppins bold */
     text-decoration: none;
 }
 
-.main-nav ul {
+/* .main-nav ul is now .main-nav .nav-links in the HTML */
+.main-nav .nav-links { /* Ensure this targets the UL */
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.main-nav ul li {
+.main-nav .nav-links li { /* Ensure this targets LIs */
     margin-left: 20px;
 }
 
-.main-nav ul li a {
-    color: #ecf0f1;
+.main-nav .nav-links li a { /* Ensure this targets ANCHORS */
+    color: var(--light-background); /* Updated */
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1rem; /* Will inherit Open Sans */
     padding: 0.5rem 0.8rem;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.main-nav ul li a:hover, .main-nav ul li a.active {
-    background-color: #3498db; /* Blue */
-    color: #fff;
+.main-nav .nav-links li a:hover, .main-nav .nav-links li a.active {
+    background-color: var(--primary-green); /* Updated */
+    color: var(--light-background); 
 }
 
-.main-nav ul li a .fas { /* Font Awesome icon */
+/* Consolidated .main-nav .nav-links styling.
+   The HTML uses <ul class="nav-links">.
+   The previous duplicate definitions for .main-nav .nav-links and .main-nav .nav-links li are removed.
+   The existing .main-nav .nav-links (targeting UL), .main-nav .nav-links li, and .main-nav .nav-links li a are correct.
+*/
+.main-nav .nav-links a .fas { /* Selector for icon inside link in nav */
     margin-right: 5px;
-}
-
-/* Original .nav-links class renamed to .main-nav ul for specificity above */
-/* New .nav-links for the ul element to be targeted by JS for toggling */
-.main-nav .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Existing style, will be overridden for mobile */
-}
-
-.main-nav .nav-links li {
-    margin-left: 20px; /* Existing style */
 }
 
 .nav-toggle {
@@ -182,7 +271,7 @@ body {
     position: relative;
     width: 25px;
     height: 3px;
-    background: white;
+    background: var(--light-background); /* Hamburger lines color */
     transition: background 0.3s ease;
 }
 
@@ -192,7 +281,7 @@ body {
     position: absolute;
     width: 25px;
     height: 3px;
-    background: white;
+    background: var(--light-background); /* Hamburger lines color */
     transition: transform 0.3s ease;
 }
 
@@ -244,14 +333,14 @@ body {
         position: absolute;
         top: 60px; /* Adjust based on main-nav height */
         left: 0;
-        background-color: #2c3e50; /* Same as nav */
+    background-color: var(--dark-text); /* Updated */
         padding: 1rem 0;
         box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-        z-index: 1000; /* Ensure it's on top */
+    z-index: 1000;
     }
 
     .main-nav .nav-links.active {
-        display: flex; /* Show when active */
+        display: flex;
     }
 
     .main-nav .nav-links li {
@@ -261,94 +350,107 @@ body {
     }
 
     .main-nav .nav-links li a {
-        display: block; /* Make link take full width of li */
+        display: block;
         padding: 0.8rem 1rem;
     }
     
     .main-nav .nav-toggle {
-        display: block; /* Show hamburger button */
+        display: block;
     }
 }
 
 
 /* Service Page Specific Styles */
 .page-header {
-    background: #333;
-    color: #fff;
+    background: var(--dark-text); /* Updated */
+    color: var(--light-background); /* Updated */
     padding: 1rem 2rem;
     text-align: center;
 }
 
-.page-header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-.page-header nav a:hover {
-    text-decoration: underline;
-}
+/* .page-header nav a was for old structure, main-nav handles this now */
 
 .page-header h1 {
     margin-top: 0.5rem;
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Slightly larger for service page titles */
+    color: var(--light-background); /* Ensure good contrast on dark header */
 }
 
 .service-page-content {
     padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto; /* Center content */
-    background: #fff;
-    margin-top: 1rem; /* Space from header */
-    margin-bottom: 1rem; /* Space from footer */
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 900px; /* Slightly wider for better content flow */
+    margin: 2rem auto; /* Consistent margin */
+    background: #ffffff; 
+    border-radius: 8px; 
+    border: 1px solid var(--neutral-gray); 
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.1); /* Slightly more pronounced shadow */
 }
 
-.service-page-content h2 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #007bff;
+.service-page-intro-image {
+    margin-bottom: 2rem; /* Space below the image */
+    text-align: center; /* Center the image if it's not full width */
+}
+
+.service-page-intro-image img {
+    width: 100%;
+    max-width: 700px; /* Max width for the image to prevent it being too large */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.service-page-content .service-details h2, /* Target h2 within specific sections for consistency */
+.service-page-content .service-portfolio h2 {
+    font-size: 2rem; /* Consistent heading size for sections */
+    color: var(--primary-green); 
+    margin-top: 2rem; /* Consistent top margin for section titles */
+    margin-bottom: 1.5rem; /* Consistent bottom margin */
+    border-bottom: 2px solid var(--primary-yellow); 
     padding-bottom: 0.5rem;
 }
-
-.service-page-content h2:first-child {
-    margin-top: 0;
+.service-page-content .service-details h2:first-of-type { /* First h2 in service-details */
+     margin-top: 0; /* Remove top margin if it's the very first element after image */
 }
 
+
 .service-page-content p, .service-page-content ul {
-    margin-bottom: 1rem;
-    line-height: 1.7;
+    margin-bottom: 1.5rem; /* Increased spacing */
+    line-height: 1.8; /* Slightly more line height for readability */
+    font-size: 1rem; /* Standard body text size */
+    color: var(--dark-text);
 }
 
 .service-page-content ul {
     list-style: disc;
-    margin-left: 20px;
+    margin-left: 25px; /* Adjusted indent */
+    padding-left: 0; /* Reset padding if margin-left is used */
+}
+
+.service-page-content ul li {
+    margin-bottom: 0.5rem; /* Spacing between list items */
 }
 
 .service-page-content ul li strong {
-    font-weight: bold;
+    font-weight: 700; /* Poppins bold or Open Sans bold */
+    color: var(--dark-text); /* Ensure strong text is also using the theme color */
 }
 
-.service-portfolio {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+.service-portfolio { /* This section might contain placeholder text for now */
+    margin-top: 2.5rem; /* Increased spacing */
+    padding-top: 1.5rem; /* Increased spacing */
+    border-top: 1px solid var(--neutral-gray);
 }
 
 footer {
     text-align: center;
     padding: 1.5rem 2rem;
-    background: #333;
-    color: #fff;
-    margin-top: 2rem; /* Ensure it's at the bottom */
+    background: var(--dark-text); /* Updated */
+    color: var(--light-background); /* Updated */
+    margin-top: 2rem;
 }
 
 footer p {
-    margin: 0;
+    margin: 0; /* Will inherit Open Sans */
 }
 
 /* Portfolio Page Specific Styles */
@@ -356,22 +458,23 @@ footer p {
     padding: 2rem;
     max-width: 1200px; /* Wider for portfolio grid */
     margin: 0 auto;
-    background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 1.5rem; /* Space between items */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .portfolio-item {
-    background: #f9f9f9;
-    border: 1px solid #eee;
+    background: var(--light-background); /* Updated */
+    border: 1px solid var(--neutral-gray); /* Updated */
     border-radius: 5px;
     padding: 1rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -385,50 +488,91 @@ footer p {
 .portfolio-item img {
     width: 100%;
     height: auto;
-    max-height: 200px; /* Control image height */
-    object-fit: cover; /* Ensure image covers the area, might crop */
+    max-height: 200px;
+    object-fit: cover;
     border-radius: 3px;
     margin-bottom: 1rem;
 }
 
 .portfolio-item h3 {
-    font-size: 1.4rem;
-    color: #333;
+    font-size: 1.4rem; /* Will inherit Poppins */
+    color: var(--dark-text); /* Updated */
     margin-bottom: 0.5rem;
 }
 
 .portfolio-item p {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.9rem; /* Will inherit Open Sans */
+    color: var(--dark-text); /* Updated, maybe a lighter shade of dark-text if too strong */
     margin-bottom: 0.75rem;
     line-height: 1.5;
 }
 
 .category-tag {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-green); /* Updated */
+    color: var(--light-background); /* Updated */
     padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
+    font-size: 0.75rem; /* Will inherit Open Sans */
     border-radius: 3px;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: bold; /* Open Sans bold */
+}
+
+.product-image-placeholder {
+    width: 100%;
+    max-height: 200px; /* Or a height that fits your design */
+    object-fit: cover; /* Ensures the image covers the area, might crop */
+    margin-bottom: 1rem; /* Space between image and product title */
+    border-radius: 3px; /* Consistent with other image styling */
+    background-color: var(--neutral-gray); /* Fallback if image doesn't load */
 }
 
 /* Responsive adjustments for portfolio grid already handled by grid-template-columns */
 
 /* E-commerce Pages (Shop, Cart, Checkout) */
 
+/* Shop Page Filter */
+.filter-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-btn {
+    background-color: var(--light-background);
+    color: var(--dark-text);
+    border: 1px solid var(--neutral-gray);
+    padding: 0.5rem 1rem;
+    margin: 0 0.3rem;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background-color: var(--neutral-gray);
+    border-color: var(--dark-text);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    border-color: var(--primary-green);
+    font-weight: bold;
+}
+
 /* Shop Page */
 .shop-content {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
 }
 
 .product-listings {
@@ -438,32 +582,42 @@ footer p {
 }
 
 .product-item {
-    background: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
+    background: var(--light-background); /* Updated */
+    border: 1px solid var(--neutral-gray); /* Updated */
+    border-radius: 8px; /* Enhanced border-radius for consistency */
     padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 8px rgba(45, 55, 72, 0.08); 
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.product-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(45, 55, 72, 0.15); 
+}
+
+.product-item.hidden { /* Class to hide products */
+    display: none;
 }
 
 .product-item h3 {
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.5rem; /* Will inherit Poppins */
+    color: var(--dark-text); /* Updated */
     margin-bottom: 0.75rem;
 }
 
 .product-item p {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.9rem; /* Will inherit Open Sans */
+    color: var(--dark-text); /* Updated */
     margin-bottom: 0.5rem;
-    flex-grow: 1; /* Make description take available space */
+    flex-grow: 1;
 }
 
 .product-item .price {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #007bff;
+    font-size: 1.3rem; /* Will inherit Open Sans */
+    font-weight: bold; /* Open Sans bold */
+    color: var(--primary-green); /* Updated */
     margin-bottom: 1rem;
 }
 
@@ -471,17 +625,19 @@ footer p {
     width: 60px;
     padding: 0.3rem;
     margin-bottom: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--neutral-gray); /* Updated */
     border-radius: 3px;
+    font-family: var(--font-body);
 }
 
 .add-to-cart-btn {
-    background: #28a745;
-    color: white;
+    background: var(--primary-green); /* Updated */
+    color: var(--light-background); /* Updated */
     padding: 0.7rem 1rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: bold; /* Open Sans bold */
+    font-family: var(--font-body);
     text-align: center;
     border: none;
     cursor: pointer;
@@ -489,7 +645,7 @@ footer p {
 }
 
 .add-to-cart-btn:hover {
-    background: #218838;
+    background: #2C8A87; /* Darker green */
 }
 
 /* Cart Page */
@@ -497,11 +653,12 @@ footer p {
     padding: 2rem;
     max-width: 900px;
     margin: 0 auto;
-    background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
 }
 
 #cart-items-container .cart-item {
@@ -509,7 +666,7 @@ footer p {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--neutral-gray); /* Updated */
 }
 #cart-items-container .cart-item:last-child {
     border-bottom: none;
@@ -520,56 +677,58 @@ footer p {
 }
 .cart-item-details h4 {
     margin: 0 0 0.25rem 0;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* Will inherit Poppins */
 }
 .cart-item-details p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.9rem; /* Will inherit Open Sans */
+    color: var(--dark-text); /* Updated */
 }
 
 .cart-item-actions button {
-    background: #dc3545;
+    background: #E53E3E; /* Red for remove */
     color: white;
     border: none;
     padding: 0.3rem 0.7rem;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.8rem; /* Will inherit Open Sans */
+    font-family: var(--font-body);
 }
 .cart-item-actions button:hover {
-    background: #c82333;
+    background: #C53030; /* Darker Red */
 }
 
 
 .cart-summary {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 2px solid #007bff;
+    border-top: 2px solid var(--primary-green); /* Updated */
     text-align: right;
 }
 
 .cart-summary h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Will inherit Poppins */
     margin-bottom: 1rem;
 }
 
 .cart-summary p {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Will inherit Open Sans */
     margin-bottom: 1rem;
 }
 
 .cart-summary #clear-cart-btn {
-    background: #6c757d;
-    color: white;
+    background: var(--neutral-gray); /* Updated */
+    color: var(--dark-text); /* Updated */
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 0.5rem;
+    font-family: var(--font-body);
 }
 .cart-summary #clear-cart-btn:hover {
-    background: #5a6268;
+    background: #A0AEC0; /* Darker gray */
 }
 
 
@@ -578,17 +737,18 @@ footer p {
     padding: 2rem;
     max-width: 800px;
     margin: 0 auto;
-    background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
 }
 
 #checkout-form section {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--neutral-gray); /* Updated */
 }
 #checkout-form section:last-of-type {
     border-bottom: none;
@@ -596,9 +756,9 @@ footer p {
 }
 
 #checkout-form h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Will inherit Poppins */
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--dark-text); /* Updated */
 }
 
 #checkout-form div {
@@ -608,70 +768,80 @@ footer p {
 #checkout-form label {
     display: block;
     margin-bottom: 0.3rem;
-    font-weight: bold;
-    font-size: 0.9rem;
+    font-weight: bold; /* Open Sans bold */
+    font-size: 0.9rem; /* Will inherit Open Sans */
 }
 
 #checkout-form input[type="text"],
 #checkout-form input[type="email"] {
     width: 100%;
     padding: 0.6rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--neutral-gray); 
     border-radius: 3px;
     box-sizing: border-box;
+    font-family: var(--font-body);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* ADDED focus transition */
+}
+
+#checkout-form input[type="text"]:focus,
+#checkout-form input[type="email"]:focus { /* ADDED focus style for checkout inputs */
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2); 
 }
 
 #checkout-form input[type="checkbox"] {
     margin-right: 0.5rem;
+    accent-color: var(--primary-green); 
 }
 
-#checkout-form .button {
+#checkout-form .button { 
     display: inline-block;
     margin-top: 1rem;
 }
 
 #checkout-order-summary p {
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.9rem; /* Will inherit Open Sans */
+    color: var(--dark-text); /* Updated */
 }
 
 /* Contact Page Specific Styles */
 .contact-page-content {
     padding: 2rem;
-    max-width: 1100px; /* Allow wider for two-column layout */
+    max-width: 1100px;
     margin: 0 auto;
-    background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
 }
 
 .contact-container {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    gap: 2rem; /* Space between form and info sections */
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .contact-form-section {
-    flex: 2; /* Takes more space */
-    min-width: 300px; /* Minimum width before wrapping */
+    flex: 2;
+    min-width: 300px;
 }
 
 .contact-info-section {
-    flex: 1; /* Takes less space */
-    min-width: 280px; /* Minimum width */
-    background-color: #f9f9f9;
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--light-background); /* Updated */
     padding: 1.5rem;
     border-radius: 5px;
 }
 
 .contact-form-section h2,
 .contact-info-section h2 {
-    font-size: 1.8rem;
-    color: #333;
+    font-size: 1.8rem; /* Will inherit Poppins */
+    color: var(--primary-green); /* Updated */
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid var(--primary-yellow); /* Updated */
     padding-bottom: 0.5rem;
 }
 
@@ -682,8 +852,8 @@ footer p {
 #contact-form label {
     display: block;
     margin-bottom: 0.4rem;
-    font-weight: bold;
-    font-size: 0.9rem;
+    font-weight: bold; /* Open Sans bold */
+    font-size: 0.9rem; /* Will inherit Open Sans */
 }
 
 #contact-form input[type="text"],
@@ -691,24 +861,32 @@ footer p {
 #contact-form textarea {
     width: 100%;
     padding: 0.7rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--neutral-gray); 
     border-radius: 3px;
     box-sizing: border-box;
-    font-family: sans-serif; /* Ensure consistent font */
+    font-family: var(--font-body); 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* ADDED focus transition */
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus { /* ADDED focus style for contact inputs/textarea */
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2); 
 }
 
 #contact-form textarea {
-    resize: vertical; /* Allow vertical resize */
+    resize: vertical;
 }
 
-#contact-form .button {
+#contact-form .button { 
     display: inline-block;
     margin-top: 0.5rem;
 }
 
 .contact-info-section p {
     margin-bottom: 1rem;
-    line-height: 1.6;
+    line-height: 1.6; 
 }
 
 .contact-info-section ul {
@@ -719,34 +897,44 @@ footer p {
 
 .contact-info-section ul li {
     margin-bottom: 0.8rem;
-    font-size: 1rem;
+    font-size: 1rem; 
+}
+
+.contact-info-section ul li a { /* ADDED specific styling for links in contact info */
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-info-section ul li a:hover {
+    text-decoration: underline;
+    color: #2C8A87; /* Darker primary green */
 }
 
 .contact-info-section ul li .fas,
-.contact-info-section ul li .fab { /* Font Awesome icons */
+.contact-info-section ul li .fab {
     margin-right: 10px;
-    color: #007bff;
-    width: 20px; /* Align icons */
+    color: var(--primary-green); 
+    width: 20px;
     text-align: center;
 }
 
 .contact-info-section h3 {
-    font-size: 1.3rem;
-    color: #333;
+    font-size: 1.3rem; 
+    color: var(--dark-text); 
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 .social-media-links a {
-    color: #333;
-    font-size: 1.8rem; /* Larger icons */
+    color: var(--dark-text); 
+    font-size: 1.8rem;
     margin-right: 15px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .social-media-links a:hover {
-    color: #007bff;
+    color: var(--primary-green); 
 }
 
 /* Responsive adjustments for contact page */
@@ -781,5 +969,211 @@ footer p {
     .button {
         padding: 0.7rem 1rem;
         margin-bottom: 0.5rem; /* Add some space between stacked buttons */
+    }
+}
+
+/* Global link style */
+a {
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #2C8A87; /* Darker primary green for hover on general links */
+}
+
+/* Ensure main nav links maintain their specific color against dark background & correct hover */
+.main-nav .nav-links li a {
+    color: var(--light-background); /* This should be already set, ensures it */
+    text-decoration: none; /* Ensure no underline from global 'a' */
+}
+.main-nav .nav-links li a:hover, 
+.main-nav .nav-links li a.active {
+    background-color: var(--primary-green); /* Already set, ensures it */
+    color: var(--light-background); 
+    text-decoration: none; /* Ensure no underline from global 'a:hover' */
+}
+
+/* Ensure button-like elements that are links don't get underlines from global 'a' */
+.button, .add-to-cart-btn, 
+.cart-item-actions button, /* This is a button element, not an 'a', so it's fine */
+.cart-summary #clear-cart-btn { /* This is a button element, not an 'a', so it's fine */
+    text-decoration: none;
+}
+.button:hover, .add-to-cart-btn:hover {
+    text-decoration: none;
+}
+
+/* Chatbot Styles */
+.chatbot-toggler {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Size of the icon */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chatbot-toggler:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.chatbot-window {
+    position: fixed;
+    bottom: 90px; /* Above the toggler */
+    right: 20px;
+    width: 350px;
+    max-width: calc(100vw - 40px); /* Ensure it fits on small screens */
+    height: 500px;
+    max-height: calc(100vh - 110px); /* Ensure it fits on small screens */
+    background-color: #ffffff;
+    border: 1px solid var(--neutral-gray);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* To contain children with border-radius */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-window.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chat-header {
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-green); /* Darker shade or same */
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500; /* Poppins medium */
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: var(--light-background);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1; /* Ensure proper vertical alignment of '×' */
+}
+.close-chat-btn:hover {
+    opacity: 0.8;
+}
+
+.chat-log {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: var(--light-background);
+}
+
+.chat-message {
+    margin-bottom: 0.8rem;
+    max-width: 85%;
+}
+
+.chat-message p {
+    padding: 0.6rem 0.9rem;
+    border-radius: 15px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.chat-message.bot p {
+    background-color: var(--neutral-gray);
+    color: var(--dark-text);
+    border-bottom-left-radius: 2px; /* "Tail" for bot message */
+}
+
+.chat-message.user p {
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    margin-left: auto; /* Align user messages to the right */
+    border-bottom-right-radius: 2px; /* "Tail" for user message */
+}
+
+
+.chat-input-area {
+    display: flex;
+    padding: 0.75rem;
+    border-top: 1px solid var(--neutral-gray);
+    background-color: #ffffff;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--neutral-gray);
+    border-radius: 20px; /* Pill shape */
+    margin-right: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+#chat-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2);
+}
+
+#send-chat-btn {
+    background-color: var(--primary-green);
+    color: var(--light-background);
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+#send-chat-btn:hover {
+    background-color: #2C8A87; /* Darker green */
+}
+
+/* Responsive adjustments for chatbot window if needed */
+@media (max-width: 400px) {
+    .chatbot-window {
+        width: calc(100vw - 20px); /* Full width with some margin */
+        right: 10px;
+        bottom: 70px; /* Adjust if toggler is smaller */
+        height: calc(100vh - 90px);
+    }
+    .chatbot-toggler {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 15px;
+        right: 15px;
     }
 }

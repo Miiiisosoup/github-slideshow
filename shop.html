@@ -17,6 +17,25 @@
         </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="branding.html">Branding</a></li>
+                    <li><a href="logo-design.html">Logo Design</a></li>
+                    <li><a href="portfolio-making.html">Portfolio Making</a></li>
+                    <li><a href="merch-design.html">Merch Design</a></li>
+                    <li><a href="video-editing.html">Video Editing</a></li>
+                    <li><a href="thumbnail-making.html">Thumbnail Making</a></li>
+                    <li><a href="website-building.html">Website Building</a></li>
+                    <li><a href="animated-videos.html">Animated Videos</a></li>
+                    <li><a href="wedding-cards.html">Wedding Cards</a></li>
+                    <li><a href="birthday-cards.html">Birthday Cards</a></li>
+                    <li><a href="social-media-photos.html">Social Media Photos</a></li>
+                    <li><a href="photoshop-services.html">Photoshop Services</a></li>
+                    <li><a href="merch-printing-service.html">Merch Printing</a></li>
+                </ul>
+            </li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
@@ -28,39 +47,132 @@
     </header>
 
     <main class="shop-content">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="design-packages">Design Packages</button>
+            <button class="filter-btn" data-filter="consultation-services">Consultation</button>
+            <button class="filter-btn" data-filter="printing-services">Printing</button>
+            <button class="filter-btn" data-filter="editing-services">Editing</button>
+        </div>
         <section class="product-listings">
-            <div class="product-item">
+            <!-- Existing Products - Updated -->
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Logo+Package" alt="Basic Logo Package" class="product-image-placeholder">
                 <h3>Basic Logo Package</h3>
                 <p>Includes 3 initial logo concepts, 2 revision rounds, and final logo files in vector format.</p>
-                <p class="price">$299.00</p>
-                <label for="qty-logo">Quantity:</label>
-                <input type="number" id="qty-logo" name="qty-logo" value="1" min="1" class="quantity-input">
-                <button class="add-to-cart-btn" data-id="logo-package" data-name="Basic Logo Package" data-price="299.00">Add to Cart</button>
+                <p class="price">₹20000</p>
+                <label for="qty-logo-package">Quantity:</label>
+                <input type="number" id="qty-logo-package" name="qty-logo-package" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="logo-package-basic" data-name="Basic Logo Package" data-price="20000">Add to Cart</button>
             </div>
 
-            <div class="product-item">
-                <h3>Nexroy Signature T-Shirt</h3>
-                <p>High-quality cotton t-shirt with the Nexroy brand logo. Available in S, M, L, XL.</p>
-                <p class="price">$24.99</p>
-                <label for="qty-tshirt">Quantity:</label>
-                <input type="number" id="qty-tshirt" name="qty-tshirt" value="1" min="1" class="quantity-input">
-                <button class="add-to-cart-btn" data-id="tshirt" data-name="Nexroy Signature T-Shirt" data-price="24.99">Add to Cart</button>
-            </div>
-
-            <div class="product-item">
+            <div class="product-item" data-category="consultation-services">
+                 <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Design+Consult" alt="Hourly Design Consultation" class="product-image-placeholder">
                 <h3>Hourly Design Consultation</h3>
                 <p>One hour of dedicated design consultation via video call to discuss your project needs, branding, or design strategy.</p>
-                <p class="price">$75.00</p>
-                <label for="qty-consult">Quantity:</label>
-                <input type="number" id="qty-consult" name="qty-consult" value="1" min="1" class="quantity-input">
-                <button class="add-to-cart-btn" data-id="consultation" data-name="Hourly Design Consultation" data-price="75.00">Add to Cart</button>
+                <p class="price">₹2500</p>
+                <label for="qty-consultation">Quantity:</label>
+                <input type="number" id="qty-consultation" name="qty-consultation" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="consultation-hourly" data-name="Hourly Design Consultation" data-price="2500">Add to Cart</button>
             </div>
+
+            <!-- New Products -->
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Poster+Design" alt="Standard Poster Design" class="product-image-placeholder">
+                <h3>Standard Poster Design</h3>
+                <p>Custom poster design for events, promotions, or personal use. Includes 2 concepts and print-ready files.</p>
+                <p class="price">₹1500</p>
+                <label for="qty-poster">Quantity:</label>
+                <input type="number" id="qty-poster" name="qty-poster" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="poster-design-std" data-name="Standard Poster Design" data-price="1500">Add to Cart</button>
+            </div>
+
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Animated+Logo" alt="Basic Animated Logo" class="product-image-placeholder">
+                <h3>Basic Animated Logo (5 sec)</h3>
+                <p>Simple and clean animation for your existing logo. Perfect for intros/outros or social media. Max 5 seconds.</p>
+                <p class="price">₹3000</p>
+                <label for="qty-animlogo">Quantity:</label>
+                <input type="number" id="qty-animlogo" name="qty-animlogo" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="animated-logo-basic" data-name="Basic Animated Logo (5 sec)" data-price="3000">Add to Cart</button>
+            </div>
+
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Wedding+Invite" alt="Wedding Invitation Card Design" class="product-image-placeholder">
+                <h3>Wedding Invitation Card Design (Basic)</h3>
+                <p>Elegant and simple design for your wedding invitation. Includes digital proof and print-ready files for one main card.</p>
+                <p class="price">₹2000</p>
+                <label for="qty-weddingcard">Quantity:</label>
+                <input type="number" id="qty-weddingcard" name="qty-weddingcard" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="wedding-card-basic" data-name="Wedding Invitation Card Design (Basic)" data-price="2000">Add to Cart</button>
+            </div>
+
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Birthday+Card" alt="Birthday Card Design" class="product-image-placeholder">
+                <h3>Birthday Card Design (Standard)</h3>
+                <p>Custom birthday card design. We'll create a unique card based on your theme and requirements.</p>
+                <p class="price">₹1000</p>
+                <label for="qty-bdaycard">Quantity:</label>
+                <input type="number" id="qty-bdaycard" name="qty-bdaycard" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="birthday-card-std" data-name="Birthday Card Design (Standard)" data-price="1000">Add to Cart</button>
+            </div>
+
+            <div class="product-item" data-category="design-packages">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Social+Graphics" alt="Social Media Graphics Pack" class="product-image-placeholder">
+                <h3>Social Media Graphics Pack (5 posts)</h3>
+                <p>Pack of 5 custom-designed graphics for your social media posts, tailored to your brand and platform.</p>
+                <p class="price">₹2500</p>
+                <label for="qty-socialpack">Quantity:</label>
+                <input type="number" id="qty-socialpack" name="qty-socialpack" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="social-pack-5" data-name="Social Media Graphics Pack (5 posts)" data-price="2500">Add to Cart</button>
+            </div>
+
+            <div class="product-item" data-category="editing-services">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=Photo+Edit" alt="Product Photo Editing" class="product-image-placeholder">
+                <h3>Product Photo Editing (per image)</h3>
+                <p>Professional editing for your product photos, including background removal, color correction, and retouching.</p>
+                <p class="price">₹500</p>
+                <label for="qty-photoedit">Quantity (images):</label>
+                <input type="number" id="qty-photoedit" name="qty-photoedit" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="photo-edit-per-image" data-name="Product Photo Editing (per image)" data-price="500">Add to Cart</button>
+            </div>
+            
+            <div class="product-item" data-category="printing-services">
+                <img src="https://via.placeholder.com/300x200.png/CCCCCC/000000?text=TShirt+Print" alt="Custom T-Shirt Printing" class="product-image-placeholder">
+                <h3>Custom T-Shirt Printing (per item)</h3>
+                <p>High-quality custom printing for one t-shirt. Price for basic tee and single-sided print. (Design service separate).</p>
+                <p class="price">₹750</p>
+                <label for="qty-customtshirt">Quantity:</label>
+                <input type="number" id="qty-customtshirt" name="qty-customtshirt" value="1" min="1" class="quantity-input">
+                <button class="add-to-cart-btn" data-id="custom-tshirt-print" data-name="Custom T-Shirt Printing (per item)" data-price="750">Add to Cart</button>
+            </div>
+
         </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Nexroy. All rights reserved.</p>
     </footer>
+
+    <div class="chatbot-toggler">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-window">
+        <div class="chat-header">
+            <h3>Nexroy Assistant</h3>
+            <button class="close-chat-btn">&times;</button>
+        </div>
+        <div class="chat-log">
+            <!-- Chat messages will appear here -->
+            <div class="chat-message bot">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask a question...">
+            <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

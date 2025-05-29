@@ -17,6 +17,25 @@
         </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="branding.html">Branding</a></li>
+                    <li><a href="logo-design.html">Logo Design</a></li>
+                    <li><a href="portfolio-making.html">Portfolio Making</a></li>
+                    <li><a href="merch-design.html">Merch Design</a></li>
+                    <li><a href="video-editing.html">Video Editing</a></li>
+                    <li><a href="thumbnail-making.html">Thumbnail Making</a></li>
+                    <li><a href="website-building.html">Website Building</a></li>
+                    <li><a href="animated-videos.html">Animated Videos</a></li>
+                    <li><a href="wedding-cards.html">Wedding Cards</a></li>
+                    <li><a href="birthday-cards.html">Birthday Cards</a></li>
+                    <li><a href="social-media-photos.html">Social Media Photos</a></li>
+                    <li><a href="photoshop-services.html">Photoshop Services</a></li>
+                    <li><a href="merch-printing-service.html">Merch Printing</a></li>
+                </ul>
+            </li>
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
@@ -24,41 +43,75 @@
         </ul>
     </nav>
     <header class="hero">
-        <h1>Creative Design Solutions for Your Brand</h1> <!-- Reinstated H1 for semantic clarity, hidden if brand is enough -->
-        <p>Nexroy is a creative agency specializing in crafting unique and impactful design solutions. We help businesses build strong brand identities and engaging digital experiences.</p>
+        <div class="hero-content">
+            <h1>Creative Design Solutions for Your Brand</h1>
+            <p>Nexroy is a creative agency specializing in crafting unique and impactful design solutions. We help businesses build strong brand identities and engaging digital experiences.</p>
+            <a href="portfolio.html" class="button button-hero">Explore Our Portfolio</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://picsum.photos/seed/nexroyhero/1200/600" alt="Creative Design Process">
+        </div>
     </header>
 
-    <main> <!-- Added main tag -->
+    <main>
         <section class="services">
             <h2>Our Services</h2>
-        <div class="service">
-            <h3>Graphic Design</h3>
-            <p>We create visually stunning graphics that communicate your message effectively.</p>
-            <a href="graphic-design.html">Learn More</a>
-        </div>
-        <div class="service">
-            <h3>Branding</h3>
-            <p>We develop comprehensive branding strategies to establish a strong and memorable brand identity.</p>
-            <a href="branding.html">Learn More</a>
-        </div>
-        <div class="service">
-            <h3>Logo Design</h3>
-            <p>We craft unique and memorable logos that represent the core essence of your brand.</p>
-            <a href="logo-design.html">Learn More</a>
+            <div class="services-grid">
+                <div class="service">
+                    <img src="https://via.placeholder.com/80x80.png/38B2AC/FFFFFF?text=GD" alt="Graphic Design Icon" class="service-icon">
+                    <h3>Graphic Design</h3>
+                    <p>We create visually stunning graphics that communicate your message effectively.</p>
+                    <a href="graphic-design.html" class="button button-secondary">Learn More</a>
+                </div>
+                <div class="service">
+                    <img src="https://via.placeholder.com/80x80.png/38B2AC/FFFFFF?text=Brand" alt="Branding Icon" class="service-icon">
+                    <h3>Branding</h3>
+                    <p>We develop comprehensive branding strategies to establish a strong and memorable brand identity.</p>
+                    <a href="branding.html" class="button button-secondary">Learn More</a>
+                </div>
+                <div class="service">
+                    <img src="https://via.placeholder.com/80x80.png/38B2AC/FFFFFF?text=Logo" alt="Logo Design Icon" class="service-icon">
+                    <h3>Logo Design</h3>
+                    <p>We craft unique and memorable logos that represent the core essence of your brand.</p>
+                    <a href="logo-design.html" class="button button-secondary">Learn More</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="cta">
-        <h2>Ready to elevate your brand?</h2>
+        <h2>Ready to Elevate Your Brand?</h2>
+        <p>Let's discuss how Nexroy can help you achieve your creative and business goals.</p>
         <a href="portfolio.html" class="button">Explore Our Work</a>
         <a href="contact.html" class="button">Get in Touch</a>
-         <a href="shop.html" class="button">Visit Our Shop</a>
+        <a href="shop.html" class="button">Visit Our Shop</a>
         </section>
-    </main> <!-- Closed main tag -->
+    </main>
 
     <footer>
         <p>&copy; 2023 Nexroy. All rights reserved.</p>
     </footer>
+
+    <div class="chatbot-toggler">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div class="chatbot-window">
+        <div class="chat-header">
+            <h3>Nexroy Assistant</h3>
+            <button class="close-chat-btn">&times;</button>
+        </div>
+        <div class="chat-log">
+            <!-- Chat messages will appear here -->
+            <div class="chat-message bot">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask a question...">
+            <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

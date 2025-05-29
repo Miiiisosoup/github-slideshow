@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItemDiv.innerHTML = `
                     <div class="cart-item-details">
                         <h4>${item.name}</h4>
-                        <p>Price: $${item.price.toFixed(2)}</p>
+                        <p>Price: ₹${item.price.toFixed(2)}</p>
                         <p>Quantity: ${item.quantity}</p>
-                        <p>Total: $${itemTotal.toFixed(2)}</p>
+                        <p>Total: ₹${itemTotal.toFixed(2)}</p>
                     </div>
                     <div class="cart-item-actions">
                         <button class="remove-item-btn" data-index="${index}">Remove</button>
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (cartSubtotalElement) {
-            cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+            cartSubtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
         }
         updateCartIndicator(); // Also update indicator when cart changes
     }
@@ -185,14 +185,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const ul = document.createElement('ul');
         cart.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+            li.textContent = `${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}`;
             ul.appendChild(li);
             subtotal += item.price * item.quantity;
         });
         checkoutOrderSummaryContainer.appendChild(ul);
 
         const totalP = document.createElement('p');
-        totalP.innerHTML = `<strong>Total: $${subtotal.toFixed(2)}</strong>`;
+        totalP.innerHTML = `<strong>Total: ₹${subtotal.toFixed(2)}</strong>`;
         checkoutOrderSummaryContainer.appendChild(totalP);
     }
 
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Optionally redirect or clear form
             checkoutForm.reset();
             if (checkoutOrderSummaryContainer) checkoutOrderSummaryContainer.innerHTML = '<p>Your order has been placed. Cart is now empty.</p>';
-            if (document.getElementById('cart-subtotal')) document.getElementById('cart-subtotal').textContent = '$0.00'; // if on same page
+            if (document.getElementById('cart-subtotal')) document.getElementById('cart-subtotal').textContent = '₹0.00'; // if on same page
             // window.location.href = 'thank-you.html'; // If you have a thank you page
         });
     }
@@ -262,16 +262,74 @@ document.addEventListener('DOMContentLoaded', () => {
         populateCheckoutSummary();
     }
 
-    // --- Hamburger Menu Toggle ---
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.main-nav .nav-links'); // More specific selector
+    // --- Shop Page Product Filtering ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productItems = document.querySelectorAll('.product-item');
 
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            navToggle.classList.toggle('active'); // For styling the hamburger icon itself (e.g., to X)
+    if (filterButtons.length > 0 && productItems.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                button.classList.add('active');
+
+                const filterValue = button.dataset.filter;
+
+                productItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
         });
     }
+
+    // --- Hamburger Menu Toggle ---
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinksUl = document.querySelector('.main-nav .nav-links'); // Targets the UL
+
+    if (navToggle && navLinksUl) {
+        navToggle.addEventListener('click', () => {
+            navLinksUl.classList.toggle('active');
+            navToggle.classList.toggle('active'); 
+        });
+    }
+
+    // --- Services Dropdown Toggle (for Desktop and Mobile) ---
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (event) => {
+            // Allow default behavior (navigation) if it's a link with a real href for non-JS fallback or mobile main link
+            // For this setup, the main "Services" link has href="#"
+            if (toggle.getAttribute('href') === '#' || toggle.closest('.nav-links.active')) { // Second condition for when it's inside active mobile menu
+                 event.preventDefault(); 
+            }
+
+            const dropdown = toggle.parentElement; // The .dropdown li
+            dropdown.classList.toggle('open');
+
+            // Aria-expanded attribute update
+            const isExpanded = dropdown.classList.contains('open');
+            toggle.setAttribute('aria-expanded', isExpanded);
+        });
+    });
+
+    // Optional: Close dropdown when clicking outside (for desktop)
+    document.addEventListener('click', (event) => {
+        const openDropdown = document.querySelector('.dropdown.open');
+        if (openDropdown && !openDropdown.contains(event.target)) {
+            openDropdown.classList.remove('open');
+            const toggle = openDropdown.querySelector('.dropdown-toggle');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+
 
     // --- Contact Page Form Functionality ---
     const contactForm = document.getElementById('contact-form');
@@ -293,6 +351,22 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset(); // Clear the form
         });
     }
+
+    // --- Chatbot UI Toggle Functionality ---
+    const chatbotToggler = document.querySelector('.chatbot-toggler');
+    const chatbotWindow = document.querySelector('.chatbot-window');
+    const closeChatBtn = document.querySelector('.close-chat-btn');
+
+    if (chatbotToggler && chatbotWindow && closeChatBtn) {
+        chatbotToggler.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+    }
+
 });
 
 // Helper function to get current cart (if needed outside DOMContentLoaded)
