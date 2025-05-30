@@ -1,13 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@500;700&display=swap');
 
 :root {
-    --primary-green: #38B2AC;
-    --primary-yellow: #F6E05E;
-    --dark-text: #2D3748;
-    --light-background: #F7FAFC;
-    --neutral-gray: #CBD5E0;
+    /* New Advanced Palette */
+    --nexroy-dark-blue: #0D253F;
+    --nexroy-bright-yellow: #FFC300;
+    --nexroy-white: #FFFFFF;
+    --nexroy-black: #1A1A1A; /* Near black for text */
+    --nexroy-light-gray: #F0F2F5; /* Subtle backgrounds, borders */
+    --nexroy-mid-gray: #A0AEC0;   /* Secondary text, UI elements */
+    --nexroy-dark-gray: #4A5568;  /* Alternative dark text, darker UI elements */
+
+    /* Example Gradient Variables */
+    --gradient-blue-depth: linear-gradient(135deg, var(--nexroy-dark-blue), #003366); /* Dark blue to a slightly lighter, saturated blue */
+    --gradient-yellow-highlight: linear-gradient(to right, var(--nexroy-bright-yellow), #FFD700); /* Bright yellow to gold */
+    --gradient-dark-subtle: linear-gradient(to bottom, var(--nexroy-dark-blue), var(--nexroy-dark-gray));
+
+    /* Font Variables (Keeping existing Poppins & Open Sans) */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Open Sans', sans-serif;
+
+    /* Base Aliases for New Theme */
+    --color-text-base: var(--nexroy-black);
+    --color-text-secondary: var(--nexroy-mid-gray);
+    --color-background-base: var(--nexroy-white);
+    --color-background-alt: var(--nexroy-light-gray);
+    --color-border: var(--nexroy-light-gray); /* For most borders */
+    --color-primary-accent: var(--nexroy-bright-yellow); 
+    --color-secondary-accent: var(--nexroy-dark-blue);
+    
+    /* Previous Theme Variables (Commented Out for Reference/Transition) */
+    /* --primary-green: #38B2AC; */
+    /* --primary-yellow: #F6E05E; -- Replaced by --nexroy-bright-yellow */
+    /* --dark-text: #2D3748; -- Replaced by --nexroy-black or --nexroy-dark-gray */
+    /* --light-background: #F7FAFC; -- Replaced by --nexroy-white or --nexroy-light-gray */
+    /* --neutral-gray: #CBD5E0; -- Replaced by new gray shades */
 }
 
 /* Main stylesheet for Nexroy */
@@ -16,8 +42,8 @@ body {
     font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    background-color: var(--light-background); /* Updated */
-    color: var(--dark-text); /* Updated */
+    background-color: var(--color-background-base); /* Updated to new alias */
+    color: var(--color-text-base); /* Updated to new alias */
     line-height: 1.6;
 }
 
@@ -28,10 +54,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section Styling */
 .hero {
-    background-color: var(--primary-green); /* Using primary green for hero */
-    color: var(--light-background);
-    padding: 3rem 2rem; /* Adjusted padding */
-    display: flex; /* For side-by-side layout */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue */
+    color: var(--nexroy-white); /* NEW THEME: White text */
+    padding: 3rem 2rem; 
+    display: flex; 
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
@@ -82,29 +108,29 @@ h1, h2, h3, h4, h5, h6 {
 .services {
     padding: 3rem 2rem; /* Adjusted padding */
     text-align: center;
-    background-color: #ffffff; 
+    background-color: var(--color-background-base); /* NEW THEME: White or very light gray */
 }
 
 .services h2 {
-    font-size: 2.2rem; /* Adjusted size */
-    margin-bottom: 2.5rem; /* Increased margin */
-    color: var(--dark-text); /* Changed from primary-green for better contrast on white */
+    font-size: 2.2rem; 
+    margin-bottom: 2.5rem; 
+    color: var(--color-text-base); /* NEW THEME: Base text color for headings on light bg */
 }
 
-.services-grid { /* New wrapper for service items */
+.services-grid { 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .service {
-    background: var(--light-background); 
-    padding: 2rem; /* Increased padding */
-    border-radius: 8px; /* Enhanced border-radius */
-    border: 1px solid var(--neutral-gray); 
-    box-shadow: 0 4px 8px rgba(45, 55, 72, 0.1); /* Enhanced shadow */
-    text-align: center; /* Ensure content is centered */
-    display: flex; /* Use flex for better alignment */
+    background: var(--color-background-alt); /* NEW THEME: Light gray cards, or white if section bg is light gray */
+    padding: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* NEW THEME: Standardized shadow */
+    text-align: center; 
+    display: flex; 
     flex-direction: column;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -119,49 +145,46 @@ h1, h2, h3, h4, h5, h6 {
     height: 60px;
     margin-bottom: 1rem;
     border-radius: 50%; /* Make icon circular if desired */
-    background-color: var(--primary-green); /* Placeholder background for icon image */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Use dark blue for icon background */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* If using actual img tags with text from via.placeholder, this styling might be overridden.
-       Consider using <i> tags with Font Awesome for better control if actual icons are desired.
-       For placeholder.com images, their appearance is fixed by the URL.
-    */
+    /* Placeholder image text color should be set to white in URL if this background is dark */
 }
 
 
 .service h3 {
-    font-size: 1.6rem; /* Adjusted size */
-    margin-bottom: 0.75rem; /* Adjusted margin */
-    color: var(--dark-text);
+    font-size: 1.6rem; 
+    margin-bottom: 0.75rem; 
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 .service p {
-    font-size: 0.95rem; /* Adjusted size */
-    margin-bottom: 1.5rem; /* Increased margin */
-    flex-grow: 1; /* Allow p to grow to push button down */
+    font-size: 0.95rem; 
+    margin-bottom: 1.5rem; 
+    flex-grow: 1; 
 }
 
-.service .button.button-secondary { /* Targeting the secondary button in service */
-    margin-top: auto; /* Push button to bottom of flex container */
+.service .button.button-secondary { /* This button uses --nexroy-bright-yellow */
+    margin-top: auto; 
 }
 
 
 /* CTA Section Styling */
 .cta {
-    background: var(--light-background); /* Changed from primary-green */
-    color: var(--dark-text); /* Text color for light background */
+    background: var(--color-background-alt); /* NEW THEME: Light gray */
+    color: var(--color-text-base); /* NEW THEME */
     padding: 3rem 2rem;
     text-align: center;
-    border-top: 1px solid var(--neutral-gray); /* Add a subtle separator */
-    border-bottom: 1px solid var(--neutral-gray);
+    border-top: 1px solid var(--color-border); /* NEW THEME */
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
 }
 
 .cta h2 {
-    font-size: 2.2rem; /* Consistent with services H2 */
-    margin-bottom: 1rem; /* Reduced margin */
+    font-size: 2.2rem; 
+    margin-bottom: 1rem; 
 }
-.cta p { /* Added styling for new paragraph in CTA */
+.cta p { 
     font-size: 1.1rem;
     margin-bottom: 2rem;
     max-width: 600px;
@@ -171,12 +194,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .button {
-    background: var(--primary-green); /* Primary button style */
-    color: var(--light-background);   /* UPDATED */
+    background: var(--nexroy-dark-blue); /* NEW THEME: Primary button dark blue */
+    color: var(--nexroy-white);   /* NEW THEME: White text */
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold; /* Open Sans bold */
+    font-weight: bold; 
     font-family: var(--font-body);
     margin: 0 0.5rem;
     display: inline-block;
@@ -185,18 +208,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button:hover {
-    background: #2C8A87; /* Darker green - UPDATED */
-    color: var(--light-background); /* UPDATED */
+    background: var(--nexroy-dark-gray); /* NEW THEME: Dark gray hover for primary blue button */
+    color: var(--nexroy-white); 
 }
 
-/* Added secondary button style for yellow variation */
+/* Secondary button style (yellow) */
 .button.secondary { 
-    background: var(--primary-yellow);
-    color: var(--dark-text);
+    background: var(--nexroy-bright-yellow); /* NEW THEME */
+    color: var(--nexroy-black); /* NEW THEME: Dark text for yellow button */
 }
 .button.secondary:hover {
-    background: #FAD944; 
-    color: var(--dark-text);
+    background: #FFD700; /* Slightly richer yellow */
+    color: var(--nexroy-black);
 }
 
 /* Basic responsive adjustments */
@@ -208,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main Navigation Bar */
 .main-nav {
-    background-color: var(--dark-text); /* Updated */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
     padding: 0.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -217,48 +240,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-nav .nav-brand {
-    color: var(--light-background); /* Updated */
-    font-size: 1.8rem; /* Will inherit Poppins */
-    font-weight: bold; /* Poppins bold */
+    color: var(--nexroy-white); /* NEW THEME */
+    font-size: 1.8rem; 
+    font-weight: bold; 
     text-decoration: none;
 }
 
-/* .main-nav ul is now .main-nav .nav-links in the HTML */
-.main-nav .nav-links { /* Ensure this targets the UL */
+.main-nav .nav-links { 
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.main-nav .nav-links li { /* Ensure this targets LIs */
+.main-nav .nav-links li { 
     margin-left: 20px;
 }
 
-.main-nav .nav-links li a { /* Ensure this targets ANCHORS */
-    color: var(--light-background); /* Updated */
+.main-nav .nav-links li a { 
+    color: var(--nexroy-white); /* NEW THEME */
     text-decoration: none;
-    font-size: 1rem; /* Will inherit Open Sans */
+    font-size: 1rem; 
     padding: 0.5rem 0.8rem;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .main-nav .nav-links li a:hover, .main-nav .nav-links li a.active {
-    background-color: var(--primary-green); /* Updated */
-    color: var(--light-background); 
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME: Yellow for hover/active */
+    color: var(--nexroy-black); /* NEW THEME: Dark text for contrast */
 }
 
-/* Consolidated .main-nav .nav-links styling.
-   The HTML uses <ul class="nav-links">.
-   The previous duplicate definitions for .main-nav .nav-links and .main-nav .nav-links li are removed.
-   The existing .main-nav .nav-links (targeting UL), .main-nav .nav-links li, and .main-nav .nav-links li a are correct.
-*/
-.main-nav .nav-links a .fas { /* Selector for icon inside link in nav */
+.main-nav .nav-links a .fas { 
     margin-right: 5px;
 }
 
-.nav-arrow { /* Style for the chevron icon - already present */
+.nav-arrow { 
     font-size: 0.8em;
     margin-left: 0.3em;
     transition: transform 0.3s ease;
@@ -281,18 +298,18 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 100%; 
     left: 0;
-    background-color: var(--dark-text); 
-    border: 1px solid var(--primary-green); 
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    border: 1px solid var(--nexroy-bright-yellow); /* NEW THEME: Yellow accent border */
     border-top: none; 
     border-radius: 0 0 4px 4px; 
-    padding: 0 0; /* No padding when closed */
+    padding: 0 0; 
     margin: 0;
     list-style: none;
     min-width: 220px; 
     z-index: 1001; 
-    box-shadow: 0 5px 15px rgba(45, 55, 72, 0.1); /* UPDATED - Refined shadow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* NEW THEME: Slightly adjusted shadow */
     transition: opacity 0.2s ease-out, max-height 0.2s ease-out, visibility 0.2s ease-out, padding 0.2s ease-out;
-    pointer-events: none; /* Prevent interaction when hidden */
+    pointer-events: none; 
 }
 
 .dropdown.open > .dropdown-menu {
@@ -307,18 +324,18 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-menu li a {
     display: block;
     padding: 0.6rem 1.2rem;
-    color: var(--light-background);
+    color: var(--nexroy-white); /* NEW THEME */
     text-decoration: none;
     font-size: 0.95rem;
     white-space: nowrap;
 }
 
 .dropdown-menu li a:hover,
-.dropdown-menu li a:focus { /* ADDED :focus state */
-    background-color: var(--primary-green);
-    color: var(--light-background);
+.dropdown-menu li a:focus { 
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME */
+    color: var(--nexroy-black); /* NEW THEME */
     text-decoration: none;
-    outline: none; /* Remove default focus outline if custom style is sufficient */
+    outline: none; 
 }
 
 
@@ -335,7 +352,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 25px;
     height: 3px;
-    background: var(--light-background); /* Hamburger lines color */
+    background: var(--nexroy-white); /* NEW THEME */
     transition: background 0.3s ease;
 }
 
@@ -345,7 +362,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 25px;
     height: 3px;
-    background: var(--light-background); /* Hamburger lines color */
+    background: var(--nexroy-white); /* NEW THEME */
     transition: transform 0.3s ease;
 }
 
@@ -391,13 +408,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) { /* Tablet and mobile breakpoint */
     .main-nav .nav-links {
-        display: none; /* Hide links by default */
+        display: none; 
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 60px; /* Adjust based on main-nav height */
+        top: 60px; 
         left: 0;
-    background-color: var(--dark-text); /* Updated */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
         padding: 1rem 0;
         box-shadow: 0 2px 2px rgba(0,0,0,0.1);
     z-index: 1000;
@@ -410,11 +427,10 @@ h1, h2, h3, h4, h5, h6 {
     .main-nav .nav-links li {
         margin-left: 0;
         text-align: center;
-        /* padding: 0.5rem 0; -- Removed to allow full-width clickable links/dropdown toggle */
     }
 
     .main-nav .nav-links li a,
-    .main-nav .nav-links .dropdown-toggle { /* Ensure toggle also gets full width tap area */
+    .main-nav .nav-links .dropdown-toggle { 
         display: block;
         padding: 0.8rem 1rem;
         width: 100%;
@@ -422,35 +438,28 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .main-nav .nav-links .dropdown-menu {
-        position: static; /* Override absolute positioning for mobile */
-        background-color: #233140; /* Slightly lighter than main nav for distinction */
+        position: static; 
+        background-color: var(--nexroy-dark-gray); /* NEW THEME: Slightly lighter for mobile dropdown */
         border: none;
         box-shadow: none;
-        /* padding: 0; -- Handled by open state for animation */
         min-width: 100%;
-        /* max-height: 0; -- Already set by default .dropdown-menu rules */
-        /* opacity: 0; -- Already set */
-        /* visibility: hidden; -- Already set */
-        /* overflow: hidden; -- Already set */
-        /* transition is inherited from desktop and should work */
     }
-    /* .main-nav .nav-links .dropdown.open > .dropdown-menu is handled by desktop .dropdown.open > .dropdown-menu for visibility */
-    /* We just need to ensure padding is restored if it was different */
      .main-nav .nav-links .dropdown.open > .dropdown-menu {
-        padding: 0.5rem 0; /* Ensure padding is restored */
+        padding: 0.5rem 0; 
      }
 
 
     .main-nav .nav-links .dropdown-menu li a {
-        padding: 0.7rem 1rem; /* Slightly different padding for mobile dropdown items */
+        padding: 0.7rem 1rem; 
         font-size: 0.9rem; 
         text-align: center; 
-        color: var(--light-background);
+        color: var(--nexroy-white); /* NEW THEME */
     }
     .main-nav .nav-links .dropdown-menu li a:hover,
-    .main-nav .nav-links .dropdown-menu li a:focus { /* ADDED :focus state for mobile */
-        background-color: var(--primary-green);
-        outline: none; /* Remove default focus outline */
+    .main-nav .nav-links .dropdown-menu li a:focus { 
+        background-color: var(--nexroy-bright-yellow); /* NEW THEME */
+        color: var(--nexroy-black); /* NEW THEME */
+        outline: none; 
     }
     
     .main-nav .nav-toggle {
@@ -461,8 +470,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Service Page Specific Styles */
 .page-header {
-    background: var(--dark-text); /* Updated */
-    color: var(--light-background); /* Updated */
+    background: var(--nexroy-dark-blue); 
+    color: var(--nexroy-white); 
     padding: 1rem 2rem;
     text-align: center;
 }
@@ -471,18 +480,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-header h1 {
     margin-top: 0.5rem;
-    font-size: 2.8rem; /* Slightly larger for service page titles */
-    color: var(--light-background); /* Ensure good contrast on dark header */
+    font-size: 2.8rem; 
+    color: var(--nexroy-white); /* NEW THEME - was --light-background (old var) */
 }
 
 .service-page-content {
     padding: 2rem;
-    max-width: 900px; /* Slightly wider for better content flow */
-    margin: 2rem auto; /* Consistent margin */
-    background: #ffffff; 
+    max-width: 900px; 
+    margin: 2rem auto; 
+    background: var(--color-background-base); /* NEW THEME - was #ffffff */
     border-radius: 8px; 
-    border: 1px solid var(--neutral-gray); 
-    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.1); /* Slightly more pronounced shadow */
+    border: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* NEW THEME - Softer standardized shadow */
 }
 
 .service-page-intro-image {
@@ -498,53 +507,53 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.service-page-content .service-details h2, /* Target h2 within specific sections for consistency */
+.service-page-content .service-details h2, 
 .service-page-content .service-portfolio h2 {
-    font-size: 2rem; /* Consistent heading size for sections */
-    color: var(--primary-green); 
-    margin-top: 2rem; /* Consistent top margin for section titles */
-    margin-bottom: 1.5rem; /* Consistent bottom margin */
-    border-bottom: 2px solid var(--primary-yellow); 
+    font-size: 2rem; 
+    color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    margin-top: 2rem; 
+    margin-bottom: 1.5rem; 
+    border-bottom: 2px solid var(--nexroy-bright-yellow); /* NEW THEME - was --primary-yellow */
     padding-bottom: 0.5rem;
 }
-.service-page-content .service-details h2:first-of-type { /* First h2 in service-details */
-     margin-top: 0; /* Remove top margin if it's the very first element after image */
+.service-page-content .service-details h2:first-of-type { 
+     margin-top: 0; 
 }
 
 
 .service-page-content p, .service-page-content ul {
-    margin-bottom: 1.5rem; /* Increased spacing */
-    line-height: 1.8; /* Slightly more line height for readability */
-    font-size: 1rem; /* Standard body text size */
-    color: var(--dark-text);
+    margin-bottom: 1.5rem; 
+    line-height: 1.8; 
+    font-size: 1rem; 
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
 }
 
 .service-page-content ul {
     list-style: disc;
-    margin-left: 25px; /* Adjusted indent */
-    padding-left: 0; /* Reset padding if margin-left is used */
+    margin-left: 25px; 
+    padding-left: 0; 
 }
 
 .service-page-content ul li {
-    margin-bottom: 0.5rem; /* Spacing between list items */
+    margin-bottom: 0.5rem; 
 }
 
 .service-page-content ul li strong {
-    font-weight: 700; /* Poppins bold or Open Sans bold */
-    color: var(--dark-text); /* Ensure strong text is also using the theme color */
+    font-weight: 700; 
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
 }
 
-.service-portfolio { /* This section might contain placeholder text for now */
-    margin-top: 2.5rem; /* Increased spacing */
-    padding-top: 1.5rem; /* Increased spacing */
-    border-top: 1px solid var(--neutral-gray);
+.service-portfolio { 
+    margin-top: 2.5rem; 
+    padding-top: 1.5rem; 
+    border-top: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
 }
 
 footer {
     text-align: center;
     padding: 1.5rem 2rem;
-    background: var(--dark-text); /* Updated */
-    color: var(--light-background); /* Updated */
+    background: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
     margin-top: 2rem;
 }
 
@@ -559,10 +568,10 @@ footer p {
     margin: 0 auto;
     background: #ffffff; /* Explicit white */
     margin-top: 2rem; /* UPDATED - Increased top margin */
-    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
-    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
-    border: 1px solid var(--neutral-gray);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME - Standardized softer shadow */
 }
 
 .portfolio-grid {
@@ -572,11 +581,11 @@ footer p {
 }
 
 .portfolio-item {
-    background: var(--light-background); /* Updated */
-    border: 1px solid var(--neutral-gray); /* Updated */
+    background: var(--color-background-alt); /* NEW THEME - Light gray */
+    border: 1px solid var(--color-border); /* NEW THEME */
     border-radius: 5px;
     padding: 1rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Keep subtle shadow for items */
     transition: box-shadow 0.3s ease;
 }
 
@@ -595,35 +604,35 @@ footer p {
 
 .portfolio-item h3 {
     font-size: 1.4rem; /* Will inherit Poppins */
-    color: var(--dark-text); /* Updated */
+    color: var(--color-text-base); /* NEW THEME */
     margin-bottom: 0.5rem;
 }
 
 .portfolio-item p {
-    font-size: 0.9rem; /* Will inherit Open Sans */
-    color: var(--dark-text); /* Updated, maybe a lighter shade of dark-text if too strong */
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME - Secondary text */
     margin-bottom: 0.75rem;
     line-height: 1.5;
 }
 
 .category-tag {
     display: inline-block;
-    background-color: var(--primary-green); /* Updated */
-    color: var(--light-background); /* Updated */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue tag */
+    color: var(--nexroy-white); /* NEW THEME: White text */
     padding: 0.3rem 0.6rem;
-    font-size: 0.75rem; /* Will inherit Open Sans */
+    font-size: 0.75rem; 
     border-radius: 3px;
     text-transform: uppercase;
-    font-weight: bold; /* Open Sans bold */
+    font-weight: bold; 
 }
 
 .product-image-placeholder {
     width: 100%;
-    max-height: 200px; /* Or a height that fits your design */
-    object-fit: cover; /* Ensures the image covers the area, might crop */
-    margin-bottom: 1rem; /* Space between image and product title */
-    border-radius: 3px; /* Consistent with other image styling */
-    background-color: var(--neutral-gray); /* Fallback if image doesn't load */
+    max-height: 200px; 
+    object-fit: cover; 
+    margin-bottom: 1rem; 
+    border-radius: 3px; 
+    background-color: var(--nexroy-light-gray); /* NEW THEME - Was neutral-gray */
 }
 
 /* Responsive adjustments for portfolio grid already handled by grid-template-columns */
@@ -637,12 +646,12 @@ footer p {
 }
 
 .filter-btn {
-    background-color: var(--light-background);
-    color: var(--dark-text);
-    border: 1px solid var(--neutral-gray);
+    background-color: var(--color-background-alt); /* NEW THEME: Light gray */
+    color: var(--color-text-base); /* NEW THEME */
+    border: 1px solid var(--color-border); /* NEW THEME */
     padding: 0.5rem 1rem;
     margin: 0 0.3rem;
-    border-radius: 20px; /* Pill shape */
+    border-radius: 20px; 
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     font-family: var(--font-body);
@@ -650,14 +659,15 @@ footer p {
 }
 
 .filter-btn:hover {
-    background-color: var(--neutral-gray);
-    border-color: var(--dark-text);
+    background-color: var(--nexroy-mid-gray); /* NEW THEME: Mid gray for hover */
+    border-color: var(--nexroy-dark-gray); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME: White text on hover */
 }
 
 .filter-btn.active {
-    background-color: var(--primary-green);
-    color: var(--light-background);
-    border-color: var(--primary-green);
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue for active */
+    color: var(--nexroy-white); /* NEW THEME */
+    border-color: var(--nexroy-dark-blue); /* NEW THEME */
     font-weight: bold;
 }
 
@@ -666,12 +676,12 @@ footer p {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    background: #ffffff; /* Explicit white */
-    margin-top: 2rem; /* UPDATED - Increased top margin */
-    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
-    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
-    border: 1px solid var(--neutral-gray);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
 }
 
 .product-listings {
@@ -681,11 +691,11 @@ footer p {
 }
 
 .product-item {
-    background: var(--light-background); /* Updated */
-    border: 1px solid var(--neutral-gray); /* Updated */
-    border-radius: 8px; /* Enhanced border-radius for consistency */
+    background: var(--color-background-alt); /* NEW THEME: Light gray */
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 8px; 
     padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(45, 55, 72, 0.08); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* NEW THEME: Standardized shadow */
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
@@ -702,21 +712,21 @@ footer p {
 
 .product-item h3 {
     font-size: 1.5rem; /* Will inherit Poppins */
-    color: var(--dark-text); /* Updated */
+    color: var(--color-text-base); /* NEW THEME */
     margin-bottom: 0.75rem;
 }
 
 .product-item p {
-    font-size: 0.9rem; /* Will inherit Open Sans */
-    color: var(--dark-text); /* Updated */
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME: Secondary text */
     margin-bottom: 0.5rem;
     flex-grow: 1;
 }
 
 .product-item .price {
-    font-size: 1.3rem; /* Will inherit Open Sans */
-    font-weight: bold; /* Open Sans bold */
-    color: var(--primary-green); /* Updated */
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue for price */
     margin-bottom: 1rem;
 }
 
@@ -724,27 +734,29 @@ footer p {
     width: 60px;
     padding: 0.3rem;
     margin-bottom: 1rem;
-    border: 1px solid var(--neutral-gray); /* Updated */
+    border: 1px solid var(--color-border); /* NEW THEME */
     border-radius: 3px;
     font-family: var(--font-body);
 }
 
-.add-to-cart-btn {
-    background: var(--primary-green); /* Updated */
-    color: var(--light-background); /* Updated */
+.add-to-cart-btn { /* This uses the global .button style which is now dark blue */
+    /* background: var(--primary-green); -- Handled by .button */
+    /* color: var(--light-background); -- Handled by .button */
     padding: 0.7rem 1rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold; /* Open Sans bold */
+    font-weight: bold; 
     font-family: var(--font-body);
     text-align: center;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    /* Inherits .button, which is now dark blue. Hover is dark gray. */
 }
 
 .add-to-cart-btn:hover {
-    background: #2C8A87; /* Darker green */
+    /* background: #2C8A87; -- Handled by .button:hover */
+    /* color: var(--nexroy-white); -- from .button:hover */
 }
 
 /* Cart Page */
@@ -752,12 +764,12 @@ footer p {
     padding: 2rem;
     max-width: 900px;
     margin: 0 auto;
-    background: #ffffff; /* Explicit white */
-    margin-top: 2rem; /* UPDATED - Increased top margin */
-    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
-    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
-    border: 1px solid var(--neutral-gray);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
 }
 
 #cart-items-container .cart-item {
@@ -765,7 +777,7 @@ footer p {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    border-bottom: 1px solid var(--neutral-gray); /* Updated */
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
 }
 #cart-items-container .cart-item:last-child {
     border-bottom: none;
@@ -780,54 +792,57 @@ footer p {
 }
 .cart-item-details p {
     margin: 0;
-    font-size: 0.9rem; /* Will inherit Open Sans */
-    color: var(--dark-text); /* Updated */
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 .cart-item-actions button {
-    background: #E53E3E; /* Red for remove */
-    color: white;
+    background: #E53E3E; /* Red for remove - unchanged, standard for delete actions */
+    color: var(--nexroy-white); /* NEW THEME */
     border: none;
     padding: 0.3rem 0.7rem;
     border-radius: 3px;
     cursor: pointer;
-    font-size: 0.8rem; /* Will inherit Open Sans */
+    font-size: 0.8rem; 
     font-family: var(--font-body);
 }
 .cart-item-actions button:hover {
-    background: #C53030; /* Darker Red */
+    background: #C53030; /* Darker Red - unchanged */
 }
 
 
 .cart-summary {
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 2px solid var(--primary-green); /* Updated */
+    border-top: 2px solid var(--nexroy-dark-blue); /* NEW THEME: Dark blue accent */
     text-align: right;
 }
 
 .cart-summary h2 {
-    font-size: 1.5rem; /* Will inherit Poppins */
+    font-size: 1.5rem; 
     margin-bottom: 1rem;
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 .cart-summary p {
-    font-size: 1.2rem; /* Will inherit Open Sans */
+    font-size: 1.2rem; 
     margin-bottom: 1rem;
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 .cart-summary #clear-cart-btn {
-    background: var(--neutral-gray); /* Updated */
-    color: var(--dark-text); /* Updated */
+    background: var(--nexroy-mid-gray); /* NEW THEME: Mid gray for less prominent action */
+    color: var(--nexroy-white); /* NEW THEME: White text for contrast */
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 0.5rem;
     font-family: var(--font-body);
+    transition: background-color 0.3s ease;
 }
 .cart-summary #clear-cart-btn:hover {
-    background: #A0AEC0; /* Darker gray */
+    background: var(--nexroy-dark-gray); /* NEW THEME: Darker gray for hover */
 }
 
 
@@ -836,18 +851,18 @@ footer p {
     padding: 2rem;
     max-width: 800px;
     margin: 0 auto;
-    background: #ffffff; /* Explicit white */
-    margin-top: 2rem; /* UPDATED - Increased top margin */
-    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
-    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
-    border: 1px solid var(--neutral-gray);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
 }
 
 #checkout-form section {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--neutral-gray); /* Updated */
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
 }
 #checkout-form section:last-of-type {
     border-bottom: none;
@@ -855,9 +870,9 @@ footer p {
 }
 
 #checkout-form h2 {
-    font-size: 1.5rem; /* Will inherit Poppins */
+    font-size: 1.5rem; 
     margin-bottom: 1rem;
-    color: var(--dark-text); /* Updated */
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 #checkout-form div {
@@ -867,30 +882,31 @@ footer p {
 #checkout-form label {
     display: block;
     margin-bottom: 0.3rem;
-    font-weight: bold; /* Open Sans bold */
-    font-size: 0.9rem; /* Will inherit Open Sans */
+    font-weight: bold; 
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 #checkout-form input[type="text"],
 #checkout-form input[type="email"] {
     width: 100%;
     padding: 0.6rem;
-    border: 1px solid var(--neutral-gray); 
+    border: 1px solid var(--color-border); /* NEW THEME */
     border-radius: 3px;
     box-sizing: border-box;
     font-family: var(--font-body);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* ADDED focus transition */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
 #checkout-form input[type="text"]:focus,
-#checkout-form input[type="email"]:focus { /* ADDED focus style for checkout inputs */
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2); 
+#checkout-form input[type="email"]:focus { 
+    border-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue focus */
+    box-shadow: 0 0 0 2px rgba(13, 37, 63, 0.2); /* NEW THEME: Subtle dark blue glow */
 }
 
 #checkout-form input[type="checkbox"] {
     margin-right: 0.5rem;
-    accent-color: var(--primary-green); 
+    accent-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue accent */
 }
 
 #checkout-form .button { 
@@ -899,8 +915,8 @@ footer p {
 }
 
 #checkout-order-summary p {
-    font-size: 0.9rem; /* Will inherit Open Sans */
-    color: var(--dark-text); /* Updated */
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
 }
 
 /* Contact Page Specific Styles */
@@ -999,33 +1015,33 @@ footer p {
     font-size: 1rem; 
 }
 
-.contact-info-section ul li a { /* ADDED specific styling for links in contact info */
-    color: var(--primary-green);
+.contact-info-section ul li a { 
+    color: var(--nexroy-dark-blue); /* NEW THEME */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 .contact-info-section ul li a:hover {
     text-decoration: underline;
-    color: #2C8A87; /* Darker primary green */
+    color: var(--nexroy-dark-gray); /* NEW THEME */
 }
 
 .contact-info-section ul li .fas,
 .contact-info-section ul li .fab {
     margin-right: 10px;
-    color: var(--primary-green); 
+    color: var(--nexroy-dark-blue); /* NEW THEME */
     width: 20px;
     text-align: center;
 }
 
 .contact-info-section h3 {
     font-size: 1.3rem; 
-    color: var(--dark-text); 
+    color: var(--color-text-base); /* NEW THEME */
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 .social-media-links a {
-    color: var(--dark-text); 
+    color: var(--color-text-base); /* NEW THEME */
     font-size: 1.8rem;
     margin-right: 15px;
     text-decoration: none;
@@ -1033,7 +1049,7 @@ footer p {
 }
 
 .social-media-links a:hover {
-    color: var(--primary-green); 
+    color: var(--nexroy-dark-blue); /* NEW THEME */
 }
 
 /* Responsive adjustments for contact page */
@@ -1073,26 +1089,26 @@ footer p {
 
 /* Global link style */
 a {
-    color: var(--primary-green);
+    color: var(--nexroy-dark-blue); /* NEW THEME: Default link color */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #2C8A87; /* Darker primary green for hover on general links */
+    color: var(--nexroy-dark-gray); /* NEW THEME: Darker hover for links */
 }
 
 /* Ensure main nav links maintain their specific color against dark background & correct hover */
 .main-nav .nav-links li a {
-    color: var(--light-background); /* This should be already set, ensures it */
-    text-decoration: none; /* Ensure no underline from global 'a' */
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
+    text-decoration: none; 
 }
 .main-nav .nav-links li a:hover, 
 .main-nav .nav-links li a.active {
-    background-color: var(--primary-green); /* Already set, ensures it */
-    color: var(--light-background); 
-    text-decoration: none; /* Ensure no underline from global 'a:hover' */
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-black); /* NEW THEME - was --light-background */
+    text-decoration: none; 
 }
 
 /* Ensure button-like elements that are links don't get underlines from global 'a' */
@@ -1117,7 +1133,7 @@ a:hover {
 .services-carousel .section-title {
     text-align: center;
     font-size: 2.2rem;
-    color: var(--dark-text);
+    color: var(--color-text-base); /* NEW THEME */
     margin-bottom: 2rem;
 }
 
@@ -1148,12 +1164,12 @@ a:hover {
     flex: 0 0 80%; /* Each slide takes up 80% of the viewport width */
     max-width: 320px; /* Max width for a slide to prevent them being too large on wide viewports */
     scroll-snap-align: center; /* Snap slides to the center of the viewport */
-    background-color: var(--light-background);
+    background-color: var(--color-background-alt); /* NEW THEME */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.1);
-    overflow: hidden; /* To ensure child elements also respect border-radius */
-    text-decoration: none; /* Remove underline from link */
-    color: var(--dark-text); /* Default text color for slide content */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* NEW THEME - Softer shadow */
+    overflow: hidden; 
+    text-decoration: none; 
+    color: var(--color-text-base); /* NEW THEME */
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1181,30 +1197,30 @@ a:hover {
 
 .slide-title {
     font-size: 1.4rem; /* Poppins */
-    color: var(--dark-text);
+    color: var(--color-text-base); /* NEW THEME */
     margin-bottom: 0.5rem;
 }
 
 .slide-tagline {
-    font-size: 0.9rem; /* Open Sans */
-    color: var(--dark-text);
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME */
     line-height: 1.5;
-    margin-bottom: 0; /* Remove default p margin if it's the last element */
+    margin-bottom: 0; 
 }
 
 .carousel-btn {
     position: absolute;
-    top: 50%; /* Vertically center relative to the viewport or section */
-    transform: translateY(-50%); /* Precise vertical centering */
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-    color: var(--dark-text);
-    border: 1px solid var(--neutral-gray);
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque */
+    color: var(--nexroy-black); /* NEW THEME */
+    border: 1px solid var(--nexroy-mid-gray); /* NEW THEME */
     border-radius: 50%;
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
     cursor: pointer;
-    z-index: 10; /* Ensure they are above slides */
+    z-index: 10; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1213,8 +1229,8 @@ a:hover {
 
 .carousel-btn:hover,
 .carousel-btn:focus {
-    background-color: var(--primary-green);
-    color: var(--light-background);
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME: Yellow accent */
+    color: var(--nexroy-black); /* NEW THEME */
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     outline: none;
 }
@@ -1238,8 +1254,8 @@ a:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--primary-green);
-    color: var(--light-background);
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -1266,8 +1282,8 @@ a:hover {
     max-width: calc(100vw - 40px); /* Ensure it fits on small screens */
     height: 500px;
     max-height: calc(100vh - 110px); /* Ensure it fits on small screens */
-    background-color: #ffffff;
-    border: 1px solid var(--neutral-gray);
+    background-color: var(--color-background-base); /* NEW THEME */
+    border: 1px solid var(--color-border); /* NEW THEME */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 1001;
@@ -1287,13 +1303,13 @@ a:hover {
 }
 
 .chat-header {
-    background-color: var(--primary-green);
-    color: var(--light-background);
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
     padding: 0.8rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--primary-green); /* Darker shade or same */
+    border-bottom: 1px solid var(--nexroy-dark-gray); /* NEW THEME */
 }
 
 .chat-header h3 {
@@ -1309,7 +1325,7 @@ a:hover {
     font-size: 1.8rem;
     cursor: pointer;
     padding: 0 0.5rem;
-    line-height: 1; /* Ensure proper vertical alignment of '×' */
+    line-height: 1; 
 }
 .close-chat-btn:hover {
     opacity: 0.8;
@@ -1319,7 +1335,7 @@ a:hover {
     flex-grow: 1;
     padding: 1rem;
     overflow-y: auto;
-    background-color: var(--light-background);
+    background-color: var(--color-background-alt); /* NEW THEME */
 }
 
 .chat-message {
@@ -1336,46 +1352,46 @@ a:hover {
 }
 
 .chat-message.bot p {
-    background-color: var(--neutral-gray);
-    color: var(--dark-text);
-    border-bottom-left-radius: 2px; /* "Tail" for bot message */
+    background-color: var(--nexroy-light-gray); /* NEW THEME - was --neutral-gray */
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
+    border-bottom-left-radius: 2px; 
 }
 
 .chat-message.user p {
-    background-color: var(--primary-green);
-    color: var(--light-background);
-    margin-left: auto; /* Align user messages to the right */
-    border-bottom-right-radius: 2px; /* "Tail" for user message */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
+    margin-left: auto; 
+    border-bottom-right-radius: 2px; 
 }
 
 
 .chat-input-area {
     display: flex;
     padding: 0.75rem;
-    border-top: 1px solid var(--neutral-gray);
-    background-color: #ffffff;
+    border-top: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    background-color: var(--color-background-base); /* NEW THEME */
 }
 
 #chat-input {
     flex-grow: 1;
     padding: 0.6rem 0.8rem;
-    border: 1px solid var(--neutral-gray);
-    border-radius: 20px; /* Pill shape */
+    border: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    border-radius: 20px; 
     margin-right: 0.5rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
 }
 #chat-input:focus {
     outline: none;
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2);
+    border-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    box-shadow: 0 0 0 2px rgba(13, 37, 63, 0.2); /* NEW THEME - dark blue glow */
 }
 
 #send-chat-btn {
-    background-color: var(--primary-green);
-    color: var(--light-background);
+    background-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
     border: none;
-    border-radius: 50%; /* Circular button */
+    border-radius: 50%; 
     width: 40px;
     height: 40px;
     display: flex;
@@ -1385,7 +1401,7 @@ a:hover {
     font-size: 1.1rem;
 }
 #send-chat-btn:hover {
-    background-color: #2C8A87; /* Darker green */
+    background-color: var(--nexroy-dark-gray); /* NEW THEME - was #2C8A87 */
 }
 
 /* Responsive adjustments for chatbot window if needed */
