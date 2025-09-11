@@ -1,0 +1,1422 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@500;700&display=swap');
+
+:root {
+    /* New Advanced Palette */
+    --nexroy-dark-blue: #0D253F;
+    --nexroy-bright-yellow: #FFC300;
+    --nexroy-white: #FFFFFF;
+    --nexroy-black: #1A1A1A; /* Near black for text */
+    --nexroy-light-gray: #F0F2F5; /* Subtle backgrounds, borders */
+    --nexroy-mid-gray: #A0AEC0;   /* Secondary text, UI elements */
+    --nexroy-dark-gray: #4A5568;  /* Alternative dark text, darker UI elements */
+
+    /* Example Gradient Variables */
+    --gradient-blue-depth: linear-gradient(135deg, var(--nexroy-dark-blue), #003366); /* Dark blue to a slightly lighter, saturated blue */
+    --gradient-yellow-highlight: linear-gradient(to right, var(--nexroy-bright-yellow), #FFD700); /* Bright yellow to gold */
+    --gradient-dark-subtle: linear-gradient(to bottom, var(--nexroy-dark-blue), var(--nexroy-dark-gray));
+
+    /* Font Variables (Keeping existing Poppins & Open Sans) */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    /* Base Aliases for New Theme */
+    --color-text-base: var(--nexroy-black);
+    --color-text-secondary: var(--nexroy-mid-gray);
+    --color-background-base: var(--nexroy-white);
+    --color-background-alt: var(--nexroy-light-gray);
+    --color-border: var(--nexroy-light-gray); /* For most borders */
+    --color-primary-accent: var(--nexroy-bright-yellow); 
+    --color-secondary-accent: var(--nexroy-dark-blue);
+    
+    /* Previous Theme Variables (Commented Out for Reference/Transition) */
+    /* --primary-green: #38B2AC; */
+    /* --primary-yellow: #F6E05E; -- Replaced by --nexroy-bright-yellow */
+    /* --dark-text: #2D3748; -- Replaced by --nexroy-black or --nexroy-dark-gray */
+    /* --light-background: #F7FAFC; -- Replaced by --nexroy-white or --nexroy-light-gray */
+    /* --neutral-gray: #CBD5E0; -- Replaced by new gray shades */
+}
+
+/* Main stylesheet for Nexroy */
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-base); /* Updated to new alias */
+    color: var(--color-text-base); /* Updated to new alias */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-top: 0; /* Common reset for headings */
+}
+
+/* Hero Section Styling */
+.hero {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue */
+    color: var(--nexroy-white); /* NEW THEME: White text */
+    padding: 3rem 2rem; 
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left; /* Align text to the left */
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem; /* Slightly adjusted */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.1rem; /* Slightly larger paragraph text */
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.button.button-hero { /* Specific style for hero button */
+    background-color: var(--primary-yellow);
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    padding: 0.9rem 2rem;
+}
+.button.button-hero:hover {
+    background-color: #FAD944; /* Darker yellow */
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 550px; /* Control image size */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for image */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* Services Section Styling */
+.services {
+    padding: 3rem 2rem; /* Adjusted padding */
+    text-align: center;
+    background-color: var(--color-background-base); /* NEW THEME: White or very light gray */
+}
+
+.services h2 {
+    font-size: 2.2rem; 
+    margin-bottom: 2.5rem; 
+    color: var(--color-text-base); /* NEW THEME: Base text color for headings on light bg */
+}
+
+.services-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service {
+    background: var(--color-background-alt); /* NEW THEME: Light gray cards, or white if section bg is light gray */
+    padding: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* NEW THEME: Standardized shadow */
+    text-align: center; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(45, 55, 72, 0.15);
+}
+
+.service-icon {
+    width: 60px; /* Was 80x80 in HTML, adjust if needed */
+    height: 60px;
+    margin-bottom: 1rem;
+    border-radius: 50%; /* Make icon circular if desired */
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Use dark blue for icon background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Placeholder image text color should be set to white in URL if this background is dark */
+}
+
+
+.service h3 {
+    font-size: 1.6rem; 
+    margin-bottom: 0.75rem; 
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+.service p {
+    font-size: 0.95rem; 
+    margin-bottom: 1.5rem; 
+    flex-grow: 1; 
+}
+
+.service .button.button-secondary { /* This button uses --nexroy-bright-yellow */
+    margin-top: auto; 
+}
+
+
+/* CTA Section Styling */
+.cta {
+    background: var(--color-background-alt); /* NEW THEME: Light gray */
+    color: var(--color-text-base); /* NEW THEME */
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--color-border); /* NEW THEME */
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
+}
+
+.cta h2 {
+    font-size: 2.2rem; 
+    margin-bottom: 1rem; 
+}
+.cta p { 
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.button {
+    background: var(--nexroy-dark-blue); /* NEW THEME: Primary button dark blue */
+    color: var(--nexroy-white);   /* NEW THEME: White text */
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold; 
+    font-family: var(--font-body);
+    margin: 0 0.5rem;
+    display: inline-block;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background: var(--nexroy-dark-gray); /* NEW THEME: Dark gray hover for primary blue button */
+    color: var(--nexroy-white); 
+}
+
+/* Secondary button style (yellow) */
+.button.secondary { 
+    background: var(--nexroy-bright-yellow); /* NEW THEME */
+    color: var(--nexroy-black); /* NEW THEME: Dark text for yellow button */
+}
+.button.secondary:hover {
+    background: #FFD700; /* Slightly richer yellow */
+    color: var(--nexroy-black);
+}
+
+/* Basic responsive adjustments */
+@media (max-width: 768px) {
+    .service {
+        width: calc(50% - 2rem); /* Adjust for smaller screens */
+    }
+}
+
+/* Main Navigation Bar */
+.main-nav {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-nav .nav-brand {
+    color: var(--nexroy-white); /* NEW THEME */
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    text-decoration: none;
+}
+
+.main-nav .nav-links { 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav .nav-links li { 
+    margin-left: 20px;
+}
+
+.main-nav .nav-links li a { 
+    color: var(--nexroy-white); /* NEW THEME */
+    text-decoration: none;
+    font-size: 1rem; 
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav .nav-links li a:hover, .main-nav .nav-links li a.active {
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME: Yellow for hover/active */
+    color: var(--nexroy-black); /* NEW THEME: Dark text for contrast */
+}
+
+.main-nav .nav-links a .fas { 
+    margin-right: 5px;
+}
+
+.nav-arrow { 
+    font-size: 0.8em;
+    margin-left: 0.3em;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.open > .dropdown-toggle .nav-arrow { /* For rotating arrow - already present */
+    transform: rotate(180deg);
+}
+
+.dropdown { /* Parent LI - already present */
+    position: relative;
+}
+
+.dropdown-menu {
+    /* display: none; -- Replaced by opacity/visibility/max-height for transition */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0; /* Initial state for animation */
+    overflow: hidden; /* Important for max-height transition */
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    border: 1px solid var(--nexroy-bright-yellow); /* NEW THEME: Yellow accent border */
+    border-top: none; 
+    border-radius: 0 0 4px 4px; 
+    padding: 0 0; 
+    margin: 0;
+    list-style: none;
+    min-width: 220px; 
+    z-index: 1001; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* NEW THEME: Slightly adjusted shadow */
+    transition: opacity 0.2s ease-out, max-height 0.2s ease-out, visibility 0.2s ease-out, padding 0.2s ease-out;
+    pointer-events: none; 
+}
+
+.dropdown.open > .dropdown-menu {
+    /* display: block; -- No longer needed */
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* Sufficiently large to show all items */
+    padding: 0.5rem 0; /* Restore padding when open */
+    pointer-events: auto; /* Allow interaction when open */
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: var(--nexroy-white); /* NEW THEME */
+    text-decoration: none;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus { 
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME */
+    color: var(--nexroy-black); /* NEW THEME */
+    text-decoration: none;
+    outline: none; 
+}
+
+
+.nav-toggle {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background: var(--nexroy-white); /* NEW THEME */
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--nexroy-white); /* NEW THEME */
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+/* Active state for hamburger icon (X) */
+.nav-toggle.active .hamburger {
+    background: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+}
+
+
+#cart-count {
+    background-color: #e74c3c; /* Red */
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+
+/* Adjust hero section padding if main-nav is fixed or very tall */
+.hero {
+    /* If main-nav height changes significantly, might need to adjust padding-top here */
+    /* Example: padding-top: calc(4rem + NAV_HEIGHT); */
+}
+
+
+@media (max-width: 768px) { /* Tablet and mobile breakpoint */
+    .main-nav .nav-links {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; 
+        left: 0;
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+        padding: 1rem 0;
+        box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    z-index: 1000;
+    }
+
+    .main-nav .nav-links.active {
+        display: flex;
+    }
+
+    .main-nav .nav-links li {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .main-nav .nav-links li a,
+    .main-nav .nav-links .dropdown-toggle { 
+        display: block;
+        padding: 0.8rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .main-nav .nav-links .dropdown-menu {
+        position: static; 
+        background-color: var(--nexroy-dark-gray); /* NEW THEME: Slightly lighter for mobile dropdown */
+        border: none;
+        box-shadow: none;
+        min-width: 100%;
+    }
+     .main-nav .nav-links .dropdown.open > .dropdown-menu {
+        padding: 0.5rem 0; 
+     }
+
+
+    .main-nav .nav-links .dropdown-menu li a {
+        padding: 0.7rem 1rem; 
+        font-size: 0.9rem; 
+        text-align: center; 
+        color: var(--nexroy-white); /* NEW THEME */
+    }
+    .main-nav .nav-links .dropdown-menu li a:hover,
+    .main-nav .nav-links .dropdown-menu li a:focus { 
+        background-color: var(--nexroy-bright-yellow); /* NEW THEME */
+        color: var(--nexroy-black); /* NEW THEME */
+        outline: none; 
+    }
+    
+    .main-nav .nav-toggle {
+        display: block;
+    }
+}
+
+
+/* Service Page Specific Styles */
+.page-header {
+    background: var(--nexroy-dark-blue); 
+    color: var(--nexroy-white); 
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+/* .page-header nav a was for old structure, main-nav handles this now */
+
+.page-header h1 {
+    margin-top: 0.5rem;
+    font-size: 2.8rem; 
+    color: var(--nexroy-white); /* NEW THEME - was --light-background (old var) */
+}
+
+.service-page-content {
+    padding: 2rem;
+    max-width: 900px; 
+    margin: 2rem auto; 
+    background: var(--color-background-base); /* NEW THEME - was #ffffff */
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* NEW THEME - Softer standardized shadow */
+}
+
+.service-page-intro-image {
+    margin-bottom: 2rem; /* Space below the image */
+    text-align: center; /* Center the image if it's not full width */
+}
+
+.service-page-intro-image img {
+    width: 100%;
+    max-width: 700px; /* Max width for the image to prevent it being too large */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.service-page-content .service-details h2, 
+.service-page-content .service-portfolio h2 {
+    font-size: 2rem; 
+    color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    margin-top: 2rem; 
+    margin-bottom: 1.5rem; 
+    border-bottom: 2px solid var(--nexroy-bright-yellow); /* NEW THEME - was --primary-yellow */
+    padding-bottom: 0.5rem;
+}
+.service-page-content .service-details h2:first-of-type { 
+     margin-top: 0; 
+}
+
+
+.service-page-content p, .service-page-content ul {
+    margin-bottom: 1.5rem; 
+    line-height: 1.8; 
+    font-size: 1rem; 
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
+}
+
+.service-page-content ul {
+    list-style: disc;
+    margin-left: 25px; 
+    padding-left: 0; 
+}
+
+.service-page-content ul li {
+    margin-bottom: 0.5rem; 
+}
+
+.service-page-content ul li strong {
+    font-weight: 700; 
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
+}
+
+.service-portfolio { 
+    margin-top: 2.5rem; 
+    padding-top: 1.5rem; 
+    border-top: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0; /* Will inherit Open Sans */
+}
+
+/* Portfolio Page Specific Styles */
+.portfolio-content {
+    padding: 2rem;
+    max-width: 1200px; /* Wider for portfolio grid */
+    margin: 0 auto;
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME - Standardized softer shadow */
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    background: var(--color-background-alt); /* NEW THEME - Light gray */
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Keep subtle shadow for items */
+    transition: box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.portfolio-item h3 {
+    font-size: 1.4rem; /* Will inherit Poppins */
+    color: var(--color-text-base); /* NEW THEME */
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-item p {
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME - Secondary text */
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.category-tag {
+    display: inline-block;
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue tag */
+    color: var(--nexroy-white); /* NEW THEME: White text */
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem; 
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold; 
+}
+
+.product-image-placeholder {
+    width: 100%;
+    max-height: 200px; 
+    object-fit: cover; 
+    margin-bottom: 1rem; 
+    border-radius: 3px; 
+    background-color: var(--nexroy-light-gray); /* NEW THEME - Was neutral-gray */
+}
+
+/* Responsive adjustments for portfolio grid already handled by grid-template-columns */
+
+/* E-commerce Pages (Shop, Cart, Checkout) */
+
+/* Shop Page Filter */
+.filter-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-btn {
+    background-color: var(--color-background-alt); /* NEW THEME: Light gray */
+    color: var(--color-text-base); /* NEW THEME */
+    border: 1px solid var(--color-border); /* NEW THEME */
+    padding: 0.5rem 1rem;
+    margin: 0 0.3rem;
+    border-radius: 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background-color: var(--nexroy-mid-gray); /* NEW THEME: Mid gray for hover */
+    border-color: var(--nexroy-dark-gray); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME: White text on hover */
+}
+
+.filter-btn.active {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue for active */
+    color: var(--nexroy-white); /* NEW THEME */
+    border-color: var(--nexroy-dark-blue); /* NEW THEME */
+    font-weight: bold;
+}
+
+/* Shop Page */
+.shop-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
+}
+
+.product-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-item {
+    background: var(--color-background-alt); /* NEW THEME: Light gray */
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 8px; 
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* NEW THEME: Standardized shadow */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.product-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(45, 55, 72, 0.15); 
+}
+
+.product-item.hidden { /* Class to hide products */
+    display: none;
+}
+
+.product-item h3 {
+    font-size: 1.5rem; /* Will inherit Poppins */
+    color: var(--color-text-base); /* NEW THEME */
+    margin-bottom: 0.75rem;
+}
+
+.product-item p {
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME: Secondary text */
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+}
+
+.product-item .price {
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue for price */
+    margin-bottom: 1rem;
+}
+
+.product-item .quantity-input {
+    width: 60px;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 3px;
+    font-family: var(--font-body);
+}
+
+.add-to-cart-btn { /* This uses the global .button style which is now dark blue */
+    /* background: var(--primary-green); -- Handled by .button */
+    /* color: var(--light-background); -- Handled by .button */
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold; 
+    font-family: var(--font-body);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Inherits .button, which is now dark blue. Hover is dark gray. */
+}
+
+.add-to-cart-btn:hover {
+    /* background: #2C8A87; -- Handled by .button:hover */
+    /* color: var(--nexroy-white); -- from .button:hover */
+}
+
+/* Cart Page */
+.cart-content {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
+}
+
+#cart-items-container .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
+}
+#cart-items-container .cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+.cart-item-details h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem; /* Will inherit Poppins */
+}
+.cart-item-details p {
+    margin: 0;
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+.cart-item-actions button {
+    background: #E53E3E; /* Red for remove - unchanged, standard for delete actions */
+    color: var(--nexroy-white); /* NEW THEME */
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem; 
+    font-family: var(--font-body);
+}
+.cart-item-actions button:hover {
+    background: #C53030; /* Darker Red - unchanged */
+}
+
+
+.cart-summary {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--nexroy-dark-blue); /* NEW THEME: Dark blue accent */
+    text-align: right;
+}
+
+.cart-summary h2 {
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+.cart-summary p {
+    font-size: 1.2rem; 
+    margin-bottom: 1rem;
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+.cart-summary #clear-cart-btn {
+    background: var(--nexroy-mid-gray); /* NEW THEME: Mid gray for less prominent action */
+    color: var(--nexroy-white); /* NEW THEME: White text for contrast */
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease;
+}
+.cart-summary #clear-cart-btn:hover {
+    background: var(--nexroy-dark-gray); /* NEW THEME: Darker gray for hover */
+}
+
+
+/* Checkout Page */
+.checkout-content {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-background-base); /* NEW THEME: White */
+    margin-top: 2rem; 
+    margin-bottom: 2rem; 
+    border-radius: 8px; 
+    border: 1px solid var(--color-border); /* NEW THEME */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* NEW THEME: Standardized softer shadow */
+}
+
+#checkout-form section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border); /* NEW THEME */
+}
+#checkout-form section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+#checkout-form h2 {
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+#checkout-form div {
+    margin-bottom: 0.8rem;
+}
+
+#checkout-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold; 
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+#checkout-form input[type="text"],
+#checkout-form input[type="email"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+#checkout-form input[type="text"]:focus,
+#checkout-form input[type="email"]:focus { 
+    border-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue focus */
+    box-shadow: 0 0 0 2px rgba(13, 37, 63, 0.2); /* NEW THEME: Subtle dark blue glow */
+}
+
+#checkout-form input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: var(--nexroy-dark-blue); /* NEW THEME: Dark blue accent */
+}
+
+#checkout-form .button { 
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+#checkout-order-summary p {
+    font-size: 0.9rem; 
+    color: var(--color-text-base); /* NEW THEME */
+}
+
+/* Contact Page Specific Styles */
+.contact-page-content {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff; /* Explicit white */
+    margin-top: 2rem; /* UPDATED - Increased top margin */
+    margin-bottom: 2rem; /* UPDATED - Consistent bottom margin */
+    border-radius: 8px; /* UPDATED - Slightly more rounded corners */
+    border: 1px solid var(--neutral-gray);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* UPDATED - Slightly enhanced shadow */
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact-form-section {
+    flex: 2;
+    min-width: 300px;
+}
+
+.contact-info-section {
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--light-background); /* Updated */
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.contact-form-section h2,
+.contact-info-section h2 {
+    font-size: 1.8rem; /* Will inherit Poppins */
+    color: var(--primary-green); /* Updated */
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-yellow); /* Updated */
+    padding-bottom: 0.5rem;
+}
+
+#contact-form div {
+    margin-bottom: 1rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold; /* Open Sans bold */
+    font-size: 0.9rem; /* Will inherit Open Sans */
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--neutral-gray); 
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: var(--font-body); 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* ADDED focus transition */
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus { /* ADDED focus style for contact inputs/textarea */
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2); 
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form .button { 
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.contact-info-section p {
+    margin-bottom: 1rem;
+    line-height: 1.6; 
+}
+
+.contact-info-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-section ul li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem; 
+}
+
+.contact-info-section ul li a { 
+    color: var(--nexroy-dark-blue); /* NEW THEME */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-info-section ul li a:hover {
+    text-decoration: underline;
+    color: var(--nexroy-dark-gray); /* NEW THEME */
+}
+
+.contact-info-section ul li .fas,
+.contact-info-section ul li .fab {
+    margin-right: 10px;
+    color: var(--nexroy-dark-blue); /* NEW THEME */
+    width: 20px;
+    text-align: center;
+}
+
+.contact-info-section h3 {
+    font-size: 1.3rem; 
+    color: var(--color-text-base); /* NEW THEME */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.social-media-links a {
+    color: var(--color-text-base); /* NEW THEME */
+    font-size: 1.8rem;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-media-links a:hover {
+    color: var(--nexroy-dark-blue); /* NEW THEME */
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack sections on smaller screens */
+    }
+    .contact-form-section,
+    .contact-info-section {
+        flex: 1 1 100%; /* Full width when stacked */
+    }
+}
+
+@media (max-width: 480px) {
+    .service {
+        width: calc(100% - 2rem); /* Stack services on very small screens */
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .button {
+        padding: 0.7rem 1rem;
+        margin-bottom: 0.5rem; /* Add some space between stacked buttons */
+    }
+}
+
+/* Global link style */
+a {
+    color: var(--nexroy-dark-blue); /* NEW THEME: Default link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--nexroy-dark-gray); /* NEW THEME: Darker hover for links */
+}
+
+/* Ensure main nav links maintain their specific color against dark background & correct hover */
+.main-nav .nav-links li a {
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
+    text-decoration: none; 
+}
+.main-nav .nav-links li a:hover, 
+.main-nav .nav-links li a.active {
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-black); /* NEW THEME - was --light-background */
+    text-decoration: none; 
+}
+
+/* Ensure button-like elements that are links don't get underlines from global 'a' */
+.button, .add-to-cart-btn, 
+.cart-item-actions button, /* This is a button element, not an 'a', so it's fine */
+.cart-summary #clear-cart-btn { /* This is a button element, not an 'a', so it's fine */
+    text-decoration: none;
+}
+.button:hover, .add-to-cart-btn:hover {
+    text-decoration: none;
+}
+
+
+/* Services Carousel Section */
+.services-carousel {
+    padding: 2rem 0; /* Vertical padding, horizontal will be handled by viewport if needed */
+    background-color: #ffffff; /* Or var(--light-background) if a slight contrast is desired */
+    margin-bottom: 2rem; /* Space before footer or next section */
+    position: relative; /* For positioning nav buttons */
+}
+
+.services-carousel .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--color-text-base); /* NEW THEME */
+    margin-bottom: 2rem;
+}
+
+.carousel-viewport {
+    overflow-x: auto;
+    overflow-y: hidden; /* Hide vertical scrollbar if any content ever overflows */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for Firefox */
+.carousel-viewport {
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-slides {
+    display: flex;
+    gap: 1.5rem; /* Space between slides */
+    padding: 0 1.5rem; /* Padding on the sides of the slides container */
+                         /* This allows first/last slide to snap to center if viewport has no padding */
+}
+
+.carousel-slide {
+    flex: 0 0 80%; /* Each slide takes up 80% of the viewport width */
+    max-width: 320px; /* Max width for a slide to prevent them being too large on wide viewports */
+    scroll-snap-align: center; /* Snap slides to the center of the viewport */
+    background-color: var(--color-background-alt); /* NEW THEME */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* NEW THEME - Softer shadow */
+    overflow: hidden; 
+    text-decoration: none; 
+    color: var(--color-text-base); /* NEW THEME */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(45, 55, 72, 0.15);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensure image covers the area, might crop */
+}
+
+.slide-caption {
+    padding: 1rem;
+    text-align: center;
+    flex-grow: 1; /* Allows caption to take remaining space if needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-title {
+    font-size: 1.4rem; /* Poppins */
+    color: var(--color-text-base); /* NEW THEME */
+    margin-bottom: 0.5rem;
+}
+
+.slide-tagline {
+    font-size: 0.9rem; 
+    color: var(--color-text-secondary); /* NEW THEME */
+    line-height: 1.5;
+    margin-bottom: 0; 
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque */
+    color: var(--nexroy-black); /* NEW THEME */
+    border: 1px solid var(--nexroy-mid-gray); /* NEW THEME */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-btn:hover,
+.carousel-btn:focus {
+    background-color: var(--nexroy-bright-yellow); /* NEW THEME: Yellow accent */
+    color: var(--nexroy-black); /* NEW THEME */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    outline: none;
+}
+
+.prev-btn {
+    left: 10px; /* Adjust as needed */
+}
+
+.next-btn {
+    right: 10px; /* Adjust as needed */
+}
+
+/* Adjust button position if viewport has padding and buttons should be inside it */
+/* Example: If .carousel-viewport has padding: 0 40px; and buttons need to be over that padding */
+/* .carousel-viewport .prev-btn { left: 50px; } */
+/* .carousel-viewport .next-btn { right: 50px; } */
+
+
+/* Chatbot Styles */
+.chatbot-toggler {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Size of the icon */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chatbot-toggler:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.chatbot-window {
+    position: fixed;
+    bottom: 90px; /* Above the toggler */
+    right: 20px;
+    width: 350px;
+    max-width: calc(100vw - 40px); /* Ensure it fits on small screens */
+    height: 500px;
+    max-height: calc(100vh - 110px); /* Ensure it fits on small screens */
+    background-color: var(--color-background-base); /* NEW THEME */
+    border: 1px solid var(--color-border); /* NEW THEME */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* To contain children with border-radius */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-window.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chat-header {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME */
+    color: var(--nexroy-white); /* NEW THEME */
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--nexroy-dark-gray); /* NEW THEME */
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500; /* Poppins medium */
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: var(--light-background);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1; 
+}
+.close-chat-btn:hover {
+    opacity: 0.8;
+}
+
+.chat-log {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: var(--color-background-alt); /* NEW THEME */
+}
+
+.chat-message {
+    margin-bottom: 0.8rem;
+    max-width: 85%;
+}
+
+.chat-message p {
+    padding: 0.6rem 0.9rem;
+    border-radius: 15px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.chat-message.bot p {
+    background-color: var(--nexroy-light-gray); /* NEW THEME - was --neutral-gray */
+    color: var(--color-text-base); /* NEW THEME - was --dark-text (old) */
+    border-bottom-left-radius: 2px; 
+}
+
+.chat-message.user p {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
+    margin-left: auto; 
+    border-bottom-right-radius: 2px; 
+}
+
+
+.chat-input-area {
+    display: flex;
+    padding: 0.75rem;
+    border-top: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    background-color: var(--color-background-base); /* NEW THEME */
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--color-border); /* NEW THEME - was --neutral-gray */
+    border-radius: 20px; 
+    margin-right: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+#chat-input:focus {
+    outline: none;
+    border-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    box-shadow: 0 0 0 2px rgba(13, 37, 63, 0.2); /* NEW THEME - dark blue glow */
+}
+
+#send-chat-btn {
+    background-color: var(--nexroy-dark-blue); /* NEW THEME - was --primary-green */
+    color: var(--nexroy-white); /* NEW THEME - was --light-background */
+    border: none;
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+#send-chat-btn:hover {
+    background-color: var(--nexroy-dark-gray); /* NEW THEME - was #2C8A87 */
+}
+
+/* Responsive adjustments for chatbot window if needed */
+@media (max-width: 400px) {
+    .chatbot-window {
+        width: calc(100vw - 20px); /* Full width with some margin */
+        right: 10px;
+        bottom: 70px; /* Adjust if toggler is smaller */
+        height: calc(100vh - 90px);
+    }
+    .chatbot-toggler {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
